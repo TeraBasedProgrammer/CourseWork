@@ -1,0 +1,47 @@
+﻿<Window x:Class="DetailsHandbook.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DetailsHandbook"
+        xmlns:lib="clr-namespace:Details;assembly=DetailsLib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Canvas x:Name="dataBlock"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="385" Height="247" Margin="15 5 0 0">
+            <Grid Height="247" Width="385" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Модель:" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Производитель:" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Цена:" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Взаимозаменяемость:" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Напряжение питания:" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="Тип корпуса:" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="Функциональное назначние:" VerticalAlignment="Center"/>
+                <TextBox x:Name="modelInfo" Grid.Row="0" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
+                <TextBox x:Name="manufInfo" Grid.Row="1" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
+                <TextBox x:Name="priceInfo" Grid.Row="2" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
+                <TextBox x:Name="intchabInfo" Grid.Row="3" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
+                <TextBox x:Name="supVoltInfo" Grid.Row="4" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
+                <TextBox x:Name="caseTypeInfo" Grid.Row="5" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
+                <TextBox x:Name="funcPurpInfo" Grid.Row="6" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
+                <Button  Click ="AddDetailButton_Click" Grid.Column="0" Grid.Row="7" Content="Добавить деталь" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+                <Button  Click ="RefreshDataButton_Click" Grid.Column="0" Grid.Row="7" Content="Перезагрузить" Width="120" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+            </Grid>
+        </Canvas>
+        <TextBlock x:Name="dataText" Width="364" Height="420" HorizontalAlignment="Left" Margin="436,7,0,7"/>
+    </Grid>
+</Window>
