@@ -21,7 +21,11 @@ namespace DetailsLib
         }
         public override string ToString()
         {
-            return $"Модель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}\nВзаимозаменяемость: {Interchangeability}\nНапряжение питания: {SupplyVoltage}\nТип корпуса: {CaseType}\nФунк. назначение: {FunctionalPurpose}\n--------------------------------------\n";
+            return $"Модель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение питания: {SupplyVoltage}\nТип корпуса: {CaseType}\nФунк. назначение: {FunctionalPurpose}\n--------------------------------------\n";
+        }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into AnalogMicrocircuits (Model, Manufacturer, Price, Interchangeability, SupplyVoltage, CaseType, FunctionalPurpose) values (@Model, @Manufacturer, @Price, @Interchangeability, @SupplyVoltage, @CaseType, @FunctionalPurpose)";
         }
     }
 }

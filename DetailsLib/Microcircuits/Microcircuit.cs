@@ -23,5 +23,13 @@ namespace DetailsLib
             SupplyVoltage = supVolt;
             CaseType = caseType;
         }
+        public override string GetSqlInsertQuery()
+        {
+            return base.GetSqlInsertQuery();
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return base.GetSqlLoadQuery();
+        }
     }
 }

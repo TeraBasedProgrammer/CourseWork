@@ -8,7 +8,8 @@ namespace DetailsLib
 {
     public class RectifyingDiode : Diode
     {
-        public int ReverseCurrent { get; set; }
+        // Прямой ток, обратное напряжение
+        public double ReverseCurrent { get; set; }
         
         public RectifyingDiode() : base()
         {

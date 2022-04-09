@@ -7,7 +7,7 @@
         xmlns:lib="clr-namespace:Details;assembly=DetailsLib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Height="Auto">
         <Canvas x:Name="dataBlock"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="385" Height="247" Margin="15 5 0 0">
             <Grid Height="247" Width="385" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <Grid.RowDefinitions>
@@ -42,6 +42,8 @@
                 <Button  Click ="RefreshDataButton_Click" Grid.Column="0" Grid.Row="7" Content="Перезагрузить" Width="120" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
             </Grid>
         </Canvas>
-        <TextBlock x:Name="dataText" Width="364" Height="420" HorizontalAlignment="Left" Margin="436,7,0,7"/>
+        <ScrollViewer HorizontalAlignment="Right">
+            <TextBlock x:Name="dataText" Width="350" Height="Auto" HorizontalAlignment="Right" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+        </ScrollViewer>
     </Grid>
 </Window>

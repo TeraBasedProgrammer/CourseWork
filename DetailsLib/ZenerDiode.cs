@@ -17,5 +17,6 @@ namespace DetailsLib
             StabilizationVoltage = 0;
             StabilizationCurrent = 0;
         }
+        
     }
 }

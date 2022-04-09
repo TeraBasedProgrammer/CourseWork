@@ -8,13 +8,16 @@ namespace DetailsLib
 {
     public class Inductance : Detail
     {
-        public double Nominal { get; set; }
+        public  int Nominal { get; set; }
         
-        public int WorkingCurrent { get; set; }
+        public double WorkingCurrent { get; set; }
+
+        public int Access { get; set; }
         public Inductance() : base()
         {
             Nominal = 0;
             WorkingCurrent = 0;
+            Access = 0;
         }
     }
 }

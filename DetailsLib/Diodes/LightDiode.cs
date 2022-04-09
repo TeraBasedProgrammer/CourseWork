@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public class LightDiode : Diode
     {
-        public int LightPower { get; set; }
+        public double LightPower { get; set; }
        
         public LightDiode() : base()
         {

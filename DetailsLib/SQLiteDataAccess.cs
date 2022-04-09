@@ -27,7 +27,7 @@ namespace DetailsLib
             {
                 //Добавить try catch на отлов уникальной модели
 
-                cnn.Execute("Insert Into AnalogMicrocircuits (Model, Manufacturer, Price, Interchangeability, SupplyVoltage, CaseType, FunctionalPurpose) values (@Model, @Manufacturer, @Price, @Interchangeability, @SupplyVoltage, @CaseType, @FunctionalPurpose)", amc);
+                cnn.Execute(amc.GetSqlInsertQuery(), amc);
             }
         }
 

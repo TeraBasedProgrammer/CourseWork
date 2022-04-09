@@ -23,6 +23,14 @@ namespace DetailsLib
             Price = price;
             Interchangeability = intchab;
         }
+        public virtual string GetSqlInsertQuery()
+        {
+            return "";
+        }
+        public virtual string GetSqlLoadQuery()
+        {
+            return "";
+        }
         public virtual string[] GetClassData()
         {
             // Возвращать название класса и поля
