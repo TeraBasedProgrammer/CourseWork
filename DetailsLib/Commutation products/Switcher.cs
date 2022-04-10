@@ -14,5 +14,13 @@ namespace DetailsLib
         {
             SwitchType = "Undefined";
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into Switchers (Model, Manufacturer, Price, Interchangeability, MaxCommVoltage, SwitchType) values (@Model, @Manufacturer, @Price, @Interchangeability, @MaxCommVoltage, @SwitchType)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from Switchers";
+        }
     }
 }

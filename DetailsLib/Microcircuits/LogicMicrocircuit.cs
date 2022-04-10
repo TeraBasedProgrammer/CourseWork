@@ -14,5 +14,13 @@ namespace DetailsLib
         {
             LogicOrganization = "Undefined";
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into LogicMicrocircuits (Model, Manufacturer, Price, Interchangeability, SupplyVoltage, CaseType, LogicOrganization) values (@Model, @Manufacturer, @Price, @Interchangeability, @SupplyVoltage, @CaseType, @LogicOrganization)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from LogicMicrocircuits";
+        }
     }
 }

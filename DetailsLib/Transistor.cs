@@ -23,5 +23,13 @@ namespace DetailsLib
             CutoffFreq = 0;
             HighOrLowFreq = "Undefined";
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into Thyristors (Model, Manufacturer, Price, Interchangeability, Type, Power, CutoffFreq, HighOrLowFreq) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @Type, @Power, @CutoffFreq, @HighOrLowFreq)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from Thyristors";
+        }
     }
 }

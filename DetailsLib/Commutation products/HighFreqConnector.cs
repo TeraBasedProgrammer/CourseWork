@@ -14,5 +14,13 @@ namespace DetailsLib
         {
             WaveResistance = 0;
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into HighFreqConnectors (Model, Manufacturer, Price, Interchangeability, MaxCommVoltage, WaveResistance) values (@Model, @Manufacturer, @Price, @Interchangeability, @MaxCommVoltage, @WaveResistance)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from HighFreqConnectors";
+        }
     }
 }

@@ -14,5 +14,13 @@ namespace DetailsLib
         {
             WindingWorkVoltage = 0;
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into Relays (Model, Manufacturer, Price, Interchangeability, MaxCommVoltage, WindingWorkVoltage) values (@Model, @Manufacturer, @Price, @Interchangeability, @MaxCommVoltage, @WindingWorkVoltage)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from Relays";
+        }
     }
 }

@@ -14,5 +14,13 @@ namespace DetailsLib
         {
             PlateType = "Undefined";
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into MembraneCapacitors (Model, Manufacturer, Price, Interchangeability, Nominal, WorkingVoltage, Access, PlateType) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @WorkingVoltage, @Access, @PlateType)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from MembraneCapacitors";
+        }
     }
 }

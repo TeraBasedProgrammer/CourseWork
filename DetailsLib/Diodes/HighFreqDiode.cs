@@ -14,5 +14,13 @@ namespace DetailsLib
         {
             CutoffFreq = 0;
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into HighFreqDiodes (Model, Manufacturer, Price, Interchangeability, CutoffCurrent, CutoffVoltage, CutoffFreq) values (@Model, @Manufacturer, @Price, @Interchangeability, @CutoffCurrent, @CutoffVoltage, @CutoffFreq)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from HighFreqDiodes";
+        }
     }
 }

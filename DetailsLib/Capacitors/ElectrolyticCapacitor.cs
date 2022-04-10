@@ -13,5 +13,13 @@ namespace DetailsLib
         {
             PlateType = "Undefined";
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into ElectrolyticCapacitors (Model, Manufacturer, Price, Interchangeability, Nominal, WorkingVoltage, Access, PlateType) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @WorkingVoltage, @Access, @PlateType)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from ElectrolyticCapacitors";
+        }
     }
 }

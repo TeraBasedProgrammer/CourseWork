@@ -13,5 +13,13 @@ namespace DetailsLib
             DcVoltageInClosedCase = 0;
             DCurrentInOpenCase = 0;
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into Thyristors (Model, Manufacturer, Price, Interchangeability, DcVoltageInClosedCase, DCurrentInOpenCase) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @DcVoltageInClosedCase, @DCurrentInOpenCase)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from Thyristors";
+        }
     }
 }

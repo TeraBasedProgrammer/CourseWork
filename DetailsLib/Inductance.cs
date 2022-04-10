@@ -19,5 +19,13 @@ namespace DetailsLib
             WorkingCurrent = 0;
             Access = 0;
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into Inductances (Model, Manufacturer, Price, Interchangeability, Nominal, WorkingCurrent, Access) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @WorkingCurrent, @Access)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from Inductances";
+        }
     }
 }

@@ -27,6 +27,10 @@ namespace DetailsLib
         {
             return "Insert Into AnalogMicrocircuits (Model, Manufacturer, Price, Interchangeability, SupplyVoltage, CaseType, FunctionalPurpose) values (@Model, @Manufacturer, @Price, @Interchangeability, @SupplyVoltage, @CaseType, @FunctionalPurpose)";
         }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from AnalogMicrocircuits";
+        }
     }
 }
 

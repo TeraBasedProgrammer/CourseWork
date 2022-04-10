@@ -15,5 +15,13 @@ namespace DetailsLib
         {
             Tcc = "Undefined";
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into CeramicCapacitors (Model, Manufacturer, Price, Interchangeability, Nominal, WorkingVoltage, Access, Tcc) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @WorkingVoltage, @Access, @Tcc)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from CeramicCapacitors";
+        }
     }
 }

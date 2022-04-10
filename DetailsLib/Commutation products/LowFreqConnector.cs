@@ -15,5 +15,13 @@ namespace DetailsLib
         {
             ConnectorType = "Undefined";
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into LowFreqConnectors (Model, Manufacturer, Price, Interchangeability, MaxCommVoltage, ConnectorType) values (@Model, @Manufacturer, @Price, @Interchangeability, @MaxCommVoltage, @ConnectorType)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from LowFreqConnectors";
+        }
     }
 }

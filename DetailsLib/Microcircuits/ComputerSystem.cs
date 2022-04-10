@@ -14,5 +14,13 @@ namespace DetailsLib
         {
             FunctionalPurpose = "Undefined";
         }
+        public override string GetSqlInsertQuery()
+        {
+            return "Insert Into ComputerSystems (Model, Manufacturer, Price, Interchangeability, SupplyVoltage, CaseType, FunctionalPurpose) values (@Model, @Manufacturer, @Price, @Interchangeability, @SupplyVoltage, @CaseType, @FunctionalPurpose)";
+        }
+        public override string GetSqlLoadQuery()
+        {
+            return "select * from ComputerSystems";
+        }
     }
 }
