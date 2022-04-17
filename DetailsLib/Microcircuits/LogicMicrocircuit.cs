@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class LogicMicrocircuit : Microcircuit
+    public sealed class LogicMicrocircuit : Microcircuit
     {
+        public const string detailType = "Логическая микросхема";
         public string LogicOrganization { get; set; }
 
         public LogicMicrocircuit() : base()
         {
             LogicOrganization = "Undefined";
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into LogicMicrocircuits (Model, Manufacturer, Price, Interchangeability, SupplyVoltage, CaseType, LogicOrganization) values (@Model, @Manufacturer, @Price, @Interchangeability, @SupplyVoltage, @CaseType, @LogicOrganization)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from LogicMicrocircuits";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение питания: {SupplyVoltage}\nТип корпуса: {CaseType}\nЛогическая организация: {LogicOrganization}\n--------------------------------------------\n";
         }
     }
 }

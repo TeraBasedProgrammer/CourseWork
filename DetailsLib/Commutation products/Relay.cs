@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class Relay : CommProduct
+    public sealed class Relay : CommProduct
     {
+        public const string detailType = "Реле";
         public int WindingWorkVoltage { get; set; }
          
         public Relay() : base()
         {
             WindingWorkVoltage = 0;
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into Relays (Model, Manufacturer, Price, Interchangeability, MaxCommVoltage, WindingWorkVoltage) values (@Model, @Manufacturer, @Price, @Interchangeability, @MaxCommVoltage, @WindingWorkVoltage)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from Relays";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nНапряжение обмотки: {WindingWorkVoltage}В\n--------------------------------------------\n";
         }
     }
 }

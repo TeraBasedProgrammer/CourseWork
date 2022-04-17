@@ -6,20 +6,18 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class ElectrolyticCapacitor : Capacitor
+    public sealed class ElectrolyticCapacitor : Capacitor
     {
+        public const string detailType = "Электролитический конденсатор";
         public string PlateType { get; set; }
         public ElectrolyticCapacitor() : base()
         {
             PlateType = "Undefined";
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into ElectrolyticCapacitors (Model, Manufacturer, Price, Interchangeability, Nominal, WorkingVoltage, Access, PlateType) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @WorkingVoltage, @Access, @PlateType)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from ElectrolyticCapacitors";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНоминал: {Nominal}мкФ\nРабочее напряжение: {WorkingVoltage}В\nДопуск: {Access}%\nТип: {PlateType}\n--------------------------------------------\n";
         }
     }
 }
+

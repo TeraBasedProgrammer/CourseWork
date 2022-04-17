@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class Inductance : Detail
+    public sealed class Inductance : Detail
     {
+        public const string detailType = "Индуктивность";
         public  int Nominal { get; set; }
         
         public double WorkingCurrent { get; set; }
@@ -19,13 +20,9 @@ namespace DetailsLib
             WorkingCurrent = 0;
             Access = 0;
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into Inductances (Model, Manufacturer, Price, Interchangeability, Nominal, WorkingCurrent, Access) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @WorkingCurrent, @Access)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from Inductances";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНоминал: {Nominal}мкГн\nРабочий ток: {WorkingCurrent}А\nДопуск: {Access}%\n--------------------------------------------\n";
         }
     }
 }

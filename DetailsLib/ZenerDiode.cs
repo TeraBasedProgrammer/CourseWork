@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class ZenerDiode : Detail
+    public sealed class ZenerDiode : Detail
     {
+        public const string detailType = "Стабилитрон";
         public double StabilizationVoltage { get; set; }
        
         public int StabilizationCurrent { get; set; }
@@ -17,13 +18,9 @@ namespace DetailsLib
             StabilizationVoltage = 0;
             StabilizationCurrent = 0;
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into ZenerDiodes (Model, Manufacturer, Price, Interchangeability, StabilizationVoltage, StabilizationCurrent) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @StabilizationVoltage, @StabilizationCurrent)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from ZenerDiodes";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение стабилизации: {StabilizationVoltage}В\nТок стабилизации: {StabilizationCurrent}мА\n--------------------------------------------\n";
         }
     }
 }

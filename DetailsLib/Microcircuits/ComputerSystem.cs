@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class ComputerSystem : Microcircuit
+    public sealed class ComputerSystem : Microcircuit
     {
+        public const string detailType = "СВС";
         public string FunctionalPurpose { get; set; }
        
         public ComputerSystem() : base()
         {
             FunctionalPurpose = "Undefined";
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into ComputerSystems (Model, Manufacturer, Price, Interchangeability, SupplyVoltage, CaseType, FunctionalPurpose) values (@Model, @Manufacturer, @Price, @Interchangeability, @SupplyVoltage, @CaseType, @FunctionalPurpose)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from ComputerSystems";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение питания: {SupplyVoltage}\nТип корпуса: {CaseType}\nФунк. назначение: {FunctionalPurpose}\n--------------------------------------------\n";
         }
     }
 }

@@ -20,13 +20,5 @@ namespace DetailsLib
             WorkingVoltage = 0;
             Access = 0;
         }
-        public override string GetSqlInsertQuery()
-        {
-            return base.GetSqlInsertQuery();
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return base.GetSqlLoadQuery();
-        }
     }
 }

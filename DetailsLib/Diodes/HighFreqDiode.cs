@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class HighFreqDiode : Diode
+    public sealed class HighFreqDiode : Diode
     {
+        public const string detailType = "ВЧ диод";
         public int CutoffFreq { get; set; }
         
         public HighFreqDiode() : base()
         {
             CutoffFreq = 0;
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into HighFreqDiodes (Model, Manufacturer, Price, Interchangeability, CutoffCurrent, CutoffVoltage, CutoffFreq) values (@Model, @Manufacturer, @Price, @Interchangeability, @CutoffCurrent, @CutoffVoltage, @CutoffFreq)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from HighFreqDiodes";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nМаксимальный ток: {CutoffCurrent}А\nМаксимальное напряжение: {CutoffVoltage}В\nГраничная частота: {CutoffFreq}МГц\n--------------------------------------------\n";
         }
     }
 }

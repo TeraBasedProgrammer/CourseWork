@@ -2,8 +2,9 @@
 
 namespace DetailsLib
 {
-    public class Thyristor : Detail
+    public sealed class Thyristor : Detail
     {
+        public const string detailType = "Тиристор";
         public int DcVoltageInClosedCase { get; set; }
 
         public double DCurrentInOpenCase { get; set; }
@@ -13,13 +14,9 @@ namespace DetailsLib
             DcVoltageInClosedCase = 0;
             DCurrentInOpenCase = 0;
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into Thyristors (Model, Manufacturer, Price, Interchangeability, DcVoltageInClosedCase, DCurrentInOpenCase) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @DcVoltageInClosedCase, @DCurrentInOpenCase)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from Thyristors";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение в закрытом сост.: {DcVoltageInClosedCase}В\nТок в открытом сост.: {DCurrentInOpenCase}А\n--------------------------------------------\n";
         }
     }
 }

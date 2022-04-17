@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class Transistor : Detail 
+    public sealed class Transistor : Detail 
     {
+        public const string detailType = "Транзистор";
         public string Type { get; set; }
         
         public string Power { get; set; }
@@ -23,13 +24,9 @@ namespace DetailsLib
             CutoffFreq = 0;
             HighOrLowFreq = "Undefined";
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into Thyristors (Model, Manufacturer, Price, Interchangeability, Type, Power, CutoffFreq, HighOrLowFreq) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @Type, @Power, @CutoffFreq, @HighOrLowFreq)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from Thyristors";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nТип: {Type}\nМощность: {Power}\nГраничная частота: {CutoffFreq}МГц\nНЧ / ВЧ: {HighOrLowFreq}\n--------------------------------------------\n";
         }
     }
 }

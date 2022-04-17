@@ -17,19 +17,5 @@ namespace DetailsLib
             SupplyVoltage = "Undefined";
             CaseType = "Undefined";
         }
-        public Microcircuit(string model, string manuf, double price, string intchab, string supVolt, string caseType)
-            : base(model, manuf, price, intchab)
-        {
-            SupplyVoltage = supVolt;
-            CaseType = caseType;
-        }
-        public override string GetSqlInsertQuery()
-        {
-            return base.GetSqlInsertQuery();
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return base.GetSqlLoadQuery();
-        }
     }
 }

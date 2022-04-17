@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class Switcher : CommProduct
+    public sealed class Switcher : CommProduct
     {
+        public const string detailType = "Переключатель";
         public string SwitchType { get; set; }
         
         public Switcher() : base()
         {
             SwitchType = "Undefined";
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into Switchers (Model, Manufacturer, Price, Interchangeability, MaxCommVoltage, SwitchType) values (@Model, @Manufacturer, @Price, @Interchangeability, @MaxCommVoltage, @SwitchType)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from Switchers";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nТип: {SwitchType}\n--------------------------------------------\n";
         }
     }
 }

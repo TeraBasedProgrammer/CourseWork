@@ -1,8 +1,12 @@
-﻿global using DetailsLib;
+﻿global using System.Reflection;
+global using DetailsLib;
+using System.ComponentModel.DataAnnotations;
+
 namespace DetailsLib
 {
-    public abstract class Detail
+    public class Detail
     {
+        [Key]
         public string Model { get; set; }
         public string Manufacturer { get; set; }
         public double Price { get; set; }
@@ -23,20 +27,5 @@ namespace DetailsLib
             Price = price;
             Interchangeability = intchab;
         }
-        public virtual string GetSqlInsertQuery()
-        {
-            return "";
-        }
-        public virtual string GetSqlLoadQuery()
-        {
-            return "";
-        }
-        public virtual string[] GetClassData()
-        {
-            // Возвращать название класса и поля
-
-            return null;
-        }
-
     }
 }

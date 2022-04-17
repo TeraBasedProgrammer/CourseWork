@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class LowFreqConnector : CommProduct
-    {      
+    public sealed class LowFreqConnector : CommProduct
+    {
+        public const string detailType = "НЧ разъём";
         public string ConnectorType { get; set; }
         
         
@@ -15,13 +16,10 @@ namespace DetailsLib
         {
             ConnectorType = "Undefined";
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into LowFreqConnectors (Model, Manufacturer, Price, Interchangeability, MaxCommVoltage, ConnectorType) values (@Model, @Manufacturer, @Price, @Interchangeability, @MaxCommVoltage, @ConnectorType)";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nТип: {ConnectorType}\n--------------------------------------------\n";
         }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from LowFreqConnectors";
-        }
+
     }
 }

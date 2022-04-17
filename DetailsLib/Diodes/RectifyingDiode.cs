@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class RectifyingDiode : Diode
+    public sealed class RectifyingDiode : Diode
     {
+        public const string detailType = "Выпрямительный диод";
         // Прямой ток, обратное напряжение
         public double ReverseCurrent { get; set; }
         
@@ -15,13 +16,9 @@ namespace DetailsLib
         {
             ReverseCurrent = 0;
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into RectifyingDiodes (Model, Manufacturer, Price, Interchangeability, CutoffCurrent, CutoffVoltage, ReverseCurrent) values (@Model, @Manufacturer, @Price, @Interchangeability, @CutoffCurrent, @CutoffVoltage, @ReverseCurrent)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from RectifyingDiodes";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nМаксимальный ток: {CutoffCurrent}А\nМаксимальное напряжение: {CutoffVoltage}В\nОбратный ток: {ReverseCurrent}мА\n--------------------------------------------\n";
         }
     }
 }

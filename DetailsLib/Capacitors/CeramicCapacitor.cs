@@ -1,13 +1,17 @@
-﻿using System;
+﻿global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Sqlite;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class CeramicCapacitor : Capacitor
+    public sealed class CeramicCapacitor : Capacitor
     {
+        public const string detailType = "Керамический конденсатор";
         // Температурный коэффициент ёмкости
         public string Tcc { get; set; }
         
@@ -15,13 +19,9 @@ namespace DetailsLib
         {
             Tcc = "Undefined";
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into CeramicCapacitors (Model, Manufacturer, Price, Interchangeability, Nominal, WorkingVoltage, Access, Tcc) values (@Model, @Manufacturer, @Price, @Interchangeability, @Nominal, @WorkingVoltage, @Access, @Tcc)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from CeramicCapacitors";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНоминал: {Nominal}нФ\nРабочее напряжение: {WorkingVoltage}В\nДопуск: {Access}%\nТКЕ: {Tcc}\n--------------------------------------------\n";
         }
     }
 }

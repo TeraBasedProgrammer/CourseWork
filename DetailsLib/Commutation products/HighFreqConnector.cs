@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class HighFreqConnector : CommProduct
+    public sealed class HighFreqConnector : CommProduct
     {
+        public const string detailType = "ВЧ разъём";
         public int WaveResistance { get; set; }
        
         public HighFreqConnector() : base()
         {
             WaveResistance = 0;
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into HighFreqConnectors (Model, Manufacturer, Price, Interchangeability, MaxCommVoltage, WaveResistance) values (@Model, @Manufacturer, @Price, @Interchangeability, @MaxCommVoltage, @WaveResistance)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from HighFreqConnectors";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nВолновое сопротивление: {WaveResistance}\n--------------------------------------------\n";
         }
     }
 }

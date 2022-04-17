@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace DetailsLib
 {
-    public class LightDiode : Diode
+    public sealed class LightDiode : Diode
     {
+        public const string detailType = "Светодиод";
         public double LightPower { get; set; }
        
         public LightDiode() : base()
         {
              LightPower = 0;
         }
-        public override string GetSqlInsertQuery()
+        public override string ToString()
         {
-            return "Insert Into LightDiodes (Model, Manufacturer, Price, Interchangeability, CutoffCurrent, CutoffVoltage, LightPower) values (@Model, @Manufacturer, @Price, @Interchangeability, @CutoffCurrent, @CutoffVoltage, @LightPower)";
-        }
-        public override string GetSqlLoadQuery()
-        {
-            return "select * from LightDiodes";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nМаксимальный ток: {CutoffCurrent}А\nМаксимальное напряжение: {CutoffVoltage}В\nЯркость свечения: {LightPower}мкКд\n--------------------------------------------\n";
         }
     }
 }
