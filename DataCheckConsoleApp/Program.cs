@@ -5,7 +5,7 @@ namespace DataCheckConsoleApp
     {
         static void Main(string[] args)
         {
-            
+            Console.WriteLine(7%7);
         }
     }
 }

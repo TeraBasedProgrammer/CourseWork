@@ -55,12 +55,46 @@ namespace DetailsHandbook
             data.AddRange(ZenerDiodes.ToList());
             return data;
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder opt) 
-            => opt.UseSqlite("Data Source= Detailsdata.db");
- 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //public List<Detail> GetAllData()
         //{
-        //    base.OnModelCreating(modelBuilder);
+        //    List<Type> childs = new();
+        //    Type det = typeof(Detail);
+        //    IEnumerable<Type> types = Assembly.GetAssembly(det).GetTypes().Where(t => t.IsSubclassOf(det));
+        //    foreach (Type t in childs)
+        //        if (t.IsSealed)
+        //            childs.Add(t);
+        //    var details = new List<Detail>();
+        //    foreach(Type t in childs)
+        //    {
+        //        var methodInfo = typeof(Detail).GetMethod(nameof(this.GetAllData));
+        //        var genericMethInfo = methodInfo.MakeGenericMethod(t);
+        //        var res = genericMethInfo.Invoke(null, null);
+        //        details.AddRange();
+        //    }
+        //    return details;
         //}
+        //public void TestGetData(Type type)
+        //{
+        //    var methodInfo = typeof(Detail).GetMethod(nameof(this.GetAllData));
+        //    var genericMethInfo = methodInfo.MakeGenericMethod(type);
+        //    var res = genericMethInfo.Invoke(this, null);
+        //}
+        //private  List<Detail> GetPropValue<T>() where T : IEnumerable<Detail>
+        //{
+        //    List<Detail> testList = new List<Detail>();
+        //    var dataType = typeof(DetailsDbContext);
+        //    var props = dataType.GetProperties();
+        //    foreach (var prop in props)
+        //    {
+        //        if (prop.Name.EndsWith('s'))
+        //        {
+        //            var property = (T)prop.GetValue(this);
+        //            testList.AddRange(property.ToList());
+        //        }
+        //    }
+        //    return testList;
+        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder opt) 
+            => opt.UseSqlite("Data Source= Detailsdata.db");        
     }
 }
