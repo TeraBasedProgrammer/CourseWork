@@ -16,4 +16,8 @@
     <ProjectReference Include="..\DetailsLib\DetailsLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Styles\" />
+  </ItemGroup>
+
 </Project>

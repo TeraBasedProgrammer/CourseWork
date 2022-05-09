@@ -10,35 +10,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.Generic;
 
 namespace DetailsHandbook
 {
     public partial class MainWindow : Window
     {
-        public void ShowData()
-        {      
-            using(var db = new DetailsDbContext())
-            {      
-                foreach(var detail in db.GetData())
-                {
-                    dataText.Text += detail.ToString();
-                }
-            }
-        }
-        private void RefreshDataButton_Click(object sender, RoutedEventArgs e)
-        {
-            dataText.Text = "";
-            ShowData();
-        }
+        //public void ShowData()
+        //{      
+        //    using(var db = new DetailsDbContext())
+        //    {      
+        //        foreach(var detail in db.GetData())
+        //        {
+        //            dataText.Text += detail.ToString();
+        //        }
+        //    }
+        //}
+        //private void RefreshDataButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    dataText.Text = "";
+        //    ShowData();
+        //}
         public MainWindow()
         {
             InitializeComponent();
-            ShowData();
-        }
-
-        private void AddDetailButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Нихуя не добавлено, но кнопка работает");
         }
     }
 }

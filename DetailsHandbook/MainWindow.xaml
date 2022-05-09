@@ -6,44 +6,66 @@
         xmlns:local="clr-namespace:DetailsHandbook"
         xmlns:lib="clr-namespace:Details;assembly=DetailsLib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Height="Auto">
-        <Canvas x:Name="dataBlock"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="385" Height="247" Margin="15 5 0 0">
-            <Grid Height="247" Width="385" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition Height="1.5*"/>
-                </Grid.RowDefinitions>
+        Height="600"
+        Width="920"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow"
+        Background="Transparent">
+    <Border Background="#181735">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*"></RowDefinition>
+                <RowDefinition Height="0.15*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#100f2b">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="1.4*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Модель:" VerticalAlignment="Center"/>
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Производитель:" VerticalAlignment="Center"/>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Цена:" VerticalAlignment="Center"/>
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="Взаимозаменяемость:" VerticalAlignment="Center"/>
-                <TextBlock Grid.Row="4" Grid.Column="0" Text="Напряжение питания:" VerticalAlignment="Center"/>
-                <TextBlock Grid.Row="5" Grid.Column="0" Text="Тип корпуса:" VerticalAlignment="Center"/>
-                <TextBlock Grid.Row="6" Grid.Column="0" Text="Функциональное назначние:" VerticalAlignment="Center"/>
-                <TextBox x:Name="modelInfo" Grid.Row="0" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
-                <TextBox x:Name="manufInfo" Grid.Row="1" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
-                <TextBox x:Name="priceInfo" Grid.Row="2" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
-                <TextBox x:Name="intchabInfo" Grid.Row="3" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
-                <TextBox x:Name="supVoltInfo" Grid.Row="4" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
-                <TextBox x:Name="caseTypeInfo" Grid.Row="5" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
-                <TextBox x:Name="funcPurpInfo" Grid.Row="6" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
-                <Button  Click ="AddDetailButton_Click" Grid.Column="0" Grid.Row="7" Content="Добавить деталь" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
-                <Button  Click ="RefreshDataButton_Click" Grid.Column="0" Grid.Row="7" Content="Перезагрузить" Width="120" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+                <Image Grid.Column="0"
+                       Source="Images\logo4.2.png"
+                       Width="Auto"
+                       Height="55"
+                       HorizontalAlignment="Left"
+                       Margin="20 0 0 0"/>
+
+                <TextBox Grid.Column="1"
+                         Height="30"
+                         Width="Auto"
+                         Margin="30 0 0 0"
+                         Style="{StaticResource CustomTextBox}"/>
+
+                <Button Grid.Column="2" 
+                        Height="30"
+                        Width="40"
+                        Background="#353340"
+                        Style="{StaticResource GrayButtonStyle}">
+                    <Button.Content>
+                        <TextBlock Text="🔎" FontSize="12" Foreground="White"/>
+                    </Button.Content>
+                </Button>
+                <Button Style="{StaticResource DefaultButton}"  Grid.Column="5" Width="110" Height="40" Background="#535CF5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button.Content>
+                        <TextBlock Text="Добавить деталь"
+                                   FontSize="13"
+                                   Foreground="White"
+                                   FontWeight="DemiBold"/>
+                    </Button.Content>
+                </Button>
             </Grid>
-        </Canvas>
-        <ScrollViewer HorizontalAlignment="Right">
-            <TextBlock x:Name="dataText" Width="350" Height="Auto" HorizontalAlignment="Right" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
-        </ScrollViewer>
-    </Grid>
+            <TextBlock Grid.Column="1"
+                       Grid.Row="1"
+                           Text="Каталог"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="White"
+                           FontSize="40"
+                           FontWeight="DemiBold"/>
+        </Grid>
+    </Border>
 </Window>
