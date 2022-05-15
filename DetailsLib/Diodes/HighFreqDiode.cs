@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public sealed class HighFreqDiode : Diode
     {
-        public const string detailType = "ВЧ диод";
+        private const string detailType = "ВЧ диод";
         public int CutoffFreq { get; set; }
         
         public HighFreqDiode() : base()
@@ -19,5 +19,7 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nМаксимальный ток: {CutoffCurrent}А\nМаксимальное напряжение: {CutoffVoltage}В\nГраничная частота: {CutoffFreq}МГц\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "ВЧ диод";
     }
 }

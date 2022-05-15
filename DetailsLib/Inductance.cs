@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public sealed class Inductance : Detail
     {
-        public const string detailType = "Индуктивность";
+        private const string detailType = "Индуктивность";
         public  int Nominal { get; set; }
         
         public double WorkingCurrent { get; set; }
@@ -24,5 +24,7 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНоминал: {Nominal}мкГн\nРабочий ток: {WorkingCurrent}А\nДопуск: {Access}%\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "Инд.";
     }
 }

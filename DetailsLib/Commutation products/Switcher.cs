@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public sealed class Switcher : CommProduct
     {
-        public const string detailType = "Переключатель";
+        private const string detailType = "Тумблер";
         public string SwitchType { get; set; }
         
         public Switcher() : base()
@@ -19,5 +19,7 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nТип: {SwitchType}\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "Тумблер";
     }
 }

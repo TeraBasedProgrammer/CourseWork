@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public sealed class MembraneCapacitor : Capacitor
     {
-        public const string detailType = "Плёночный конденсатор";
+        private const string detailType = "Плёночный конденсатор";
         public string PlateType { get; set; }
         
         public MembraneCapacitor() : base()
@@ -17,8 +17,10 @@ namespace DetailsLib
         }
         public override string ToString()
         {
-            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНоминал: {Nominal}мкФ\nРабочее напряжение: {WorkingVoltage}В\nДопуск: {Access}%\n Тип: {PlateType}\n--------------------------------------------\n";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНоминал: {Nominal}мкФ\nРабочее напряжение: {WorkingVoltage}В\nДопуск: {Access}%\nТип: {PlateType}\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "ПК";
     }
 }
 

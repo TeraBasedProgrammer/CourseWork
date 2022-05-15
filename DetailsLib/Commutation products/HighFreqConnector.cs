@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public sealed class HighFreqConnector : CommProduct
     {
-        public const string detailType = "ВЧ разъём";
+        private const string detailType = "ВЧ разъём";
         public int WaveResistance { get; set; }
        
         public HighFreqConnector() : base()
@@ -19,5 +19,7 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nВолновое сопротивление: {WaveResistance}\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "ВЧ разъём";
     }
 }

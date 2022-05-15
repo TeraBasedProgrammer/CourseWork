@@ -19,13 +19,6 @@ namespace DetailsLib
             Price = 0;
             Interchangeability = "Undefined";
         }
-
-        public Detail(string model, string manuf, double price, string intchab)
-        {
-            Model = model;
-            Manufacturer = manuf;
-            Price = price;
-            Interchangeability = intchab;
-        }
+        public virtual string GetShortDetailType() => "Деталь";
     }
 }

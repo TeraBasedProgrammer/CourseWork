@@ -11,7 +11,8 @@ namespace DetailsLib
 {
     public sealed class CeramicCapacitor : Capacitor
     {
-        public const string detailType = "Керамический конденсатор";
+        private const string detailType = "Керамический конденсатор";
+
         // Температурный коэффициент ёмкости
         public string Tcc { get; set; }
         
@@ -23,5 +24,8 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНоминал: {Nominal}нФ\nРабочее напряжение: {WorkingVoltage}В\nДопуск: {Access}%\nТКЕ: {Tcc}\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "КК";
+        
     }
 }

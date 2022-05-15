@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public sealed class Transistor : Detail 
     {
-        public const string detailType = "Транзистор";
+        private const string detailType = "Транзистор";
         public string Type { get; set; }
         
         public string Power { get; set; }
@@ -28,5 +28,7 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nТип: {Type}\nМощность: {Power}\nГраничная частота: {CutoffFreq}МГц\nНЧ / ВЧ: {HighOrLowFreq}\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "Транз.";
     }
 }

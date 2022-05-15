@@ -8,7 +8,8 @@ namespace DetailsLib
 {
     public sealed class RectifyingDiode : Diode
     {
-        public const string detailType = "Выпрямительный диод";
+        private const string detailType = "Выпрямительный диод";
+
         // Прямой ток, обратное напряжение
         public double ReverseCurrent { get; set; }
         
@@ -20,5 +21,7 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nМаксимальный ток: {CutoffCurrent}А\nМаксимальное напряжение: {CutoffVoltage}В\nОбратный ток: {ReverseCurrent}мА\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "Выпр. диод";
     }
 }

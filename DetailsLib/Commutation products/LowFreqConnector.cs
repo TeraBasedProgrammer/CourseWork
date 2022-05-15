@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public sealed class LowFreqConnector : CommProduct
     {
-        public const string detailType = "НЧ разъём";
+        private const string detailType = "НЧ разъём";
         public string ConnectorType { get; set; }
         
         
@@ -21,5 +21,6 @@ namespace DetailsLib
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nТип: {ConnectorType}\n--------------------------------------------\n";
         }
 
+        public override string GetShortDetailType() => "НЧ разъём";
     }
 }

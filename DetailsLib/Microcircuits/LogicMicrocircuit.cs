@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public sealed class LogicMicrocircuit : Microcircuit
     {
-        public const string detailType = "Логическая микросхема";
+        private const string detailType = "Логическая микросхема";
         public string LogicOrganization { get; set; }
 
         public LogicMicrocircuit() : base()
@@ -19,5 +19,7 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение питания: {SupplyVoltage}\nТип корпуса: {CaseType}\nЛогическая организация: {LogicOrganization}\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "ЛМ";
     }
 }

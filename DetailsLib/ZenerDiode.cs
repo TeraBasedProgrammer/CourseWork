@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public sealed class ZenerDiode : Detail
     {
-        public const string detailType = "Стабилитрон";
+        private const string detailType = "Стабилитрон";
         public double StabilizationVoltage { get; set; }
        
         public int StabilizationCurrent { get; set; }
@@ -22,5 +22,7 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение стабилизации: {StabilizationVoltage}В\nТок стабилизации: {StabilizationCurrent}мА\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "Стаб.";
     }
 }

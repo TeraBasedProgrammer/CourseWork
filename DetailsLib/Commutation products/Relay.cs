@@ -8,7 +8,8 @@ namespace DetailsLib
 {
     public sealed class Relay : CommProduct
     {
-        public const string detailType = "Реле";
+        private const string detailType = "Реле";
+
         public int WindingWorkVoltage { get; set; }
          
         public Relay() : base()
@@ -19,5 +20,7 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nНапряжение обмотки: {WindingWorkVoltage}В\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "Реле";
     }
 }

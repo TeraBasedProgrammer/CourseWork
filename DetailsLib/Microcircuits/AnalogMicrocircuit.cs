@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public sealed class AnalogMicrocircuit : Microcircuit
     {
-        public const string detailType = "Аналоговая микросхема";
+        private const string detailType = "Аналоговая микросхема";
         public string FunctionalPurpose { get; set; }
 
         public AnalogMicrocircuit() : base()
@@ -20,6 +20,7 @@ namespace DetailsLib
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение питания: {SupplyVoltage}\nТип корпуса: {CaseType}\nФунк. назначение: {FunctionalPurpose}\n--------------------------------------------\n";
         }
 
+        public override string GetShortDetailType() => "АМ";
     }
 }
 

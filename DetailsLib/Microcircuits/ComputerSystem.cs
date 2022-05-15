@@ -8,7 +8,7 @@ namespace DetailsLib
 {
     public sealed class ComputerSystem : Microcircuit
     {
-        public const string detailType = "СВС";
+        private const string detailType = "Схема вычислительной системы";
         public string FunctionalPurpose { get; set; }
        
         public ComputerSystem() : base()
@@ -19,5 +19,7 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение питания: {SupplyVoltage}\nТип корпуса: {CaseType}\nФунк. назначение: {FunctionalPurpose}\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "СВС";
     }
 }

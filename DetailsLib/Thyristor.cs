@@ -4,7 +4,7 @@ namespace DetailsLib
 {
     public sealed class Thyristor : Detail
     {
-        public const string detailType = "Тиристор";
+        private const string detailType = "Индуктивность";
         public int DcVoltageInClosedCase { get; set; }
 
         public double DCurrentInOpenCase { get; set; }
@@ -18,5 +18,7 @@ namespace DetailsLib
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение в закрытом сост.: {DcVoltageInClosedCase}В\nТок в открытом сост.: {DCurrentInOpenCase}А\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "Тир.";
     }
 }

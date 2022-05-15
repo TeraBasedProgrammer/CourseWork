@@ -19,5 +19,7 @@ namespace Details
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nМощность: {Power}Вт\nНоминал: {Nominal}кОм\nДопуск: {Access}%\nИсполнение: {Type}\n--------------------------------------------\n";
         }
+
+        public override string GetShortDetailType() => "Пост. рез.";
     }
 }
