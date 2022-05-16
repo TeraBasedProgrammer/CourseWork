@@ -53,15 +53,16 @@
     </Style>
 
     <!-- Общий стиль для всех кнопок -->
-    
-    <Style TargetType="Button" x:Key="DefaultButton">
+
+    <Style TargetType="local:CustomButton" x:Key="DefaultButton">
         <Style.Resources>
             <SolidColorBrush x:Key="PressedButtonColor">#3D43B3</SolidColorBrush>
         </Style.Resources>
+        <Setter Property="CornerRadius" Value="6" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Name="buttonBorder" CornerRadius="6"
+                <ControlTemplate TargetType="local:CustomButton">
+                    <Border Name="buttonBorder" CornerRadius="{TemplateBinding CornerRadius}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="0"
                     Background="{TemplateBinding Background}"
@@ -87,7 +88,7 @@
     </Style>
 
     <!-- Стиль тёмных кнопок -->
-    <Style TargetType="Button" x:Key="GrayButtonStyle" BasedOn="{StaticResource DefaultButton}">
+    <Style TargetType="local:CustomButton" x:Key="GrayButtonStyle" BasedOn="{StaticResource DefaultButton}">
         <Style.Resources>
             <SolidColorBrush x:Key="PressedButtonColor">#26252E</SolidColorBrush>
         </Style.Resources>
@@ -105,10 +106,25 @@
     </Style>
 
     <!-- Стиль кнопок деталей -->
-    <Style TargetType="Button" x:Key="DetailButtonStyle" BasedOn="{StaticResource DefaultButton}">
+    <Style TargetType="local:CustomButton" x:Key="DetailButtonStyle" BasedOn="{StaticResource DefaultButton}">
         <Setter Property="Background" Value="#535CF5"/>
         <Setter Property="Margin" Value="26 30 0 20"/>
         <Setter Property="Width" Value="120"/>
         <Setter Property="Height" Value="55"/>
+    </Style>
+
+    <!-- Стиль текста кнопок фильтрации -->
+    
+    <Style TargetType="TextBlock" x:Key="FilterCheckBoxButtonTextStyle">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Width" Value="150"/>
+    </Style>
+
+    <!-- Стиль кнопок фильтрации -->
+    
+    <Style TargetType="local:CustomButton" x:Key="FilterCheckBoxButton" BasedOn="{StaticResource GrayButtonStyle}">
+        <Setter Property="CornerRadius" Value="0"/>
     </Style>
 </ResourceDictionary>

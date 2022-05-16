@@ -3,91 +3,91 @@
   <Class Name="DetailsLib.Detail" Collapsed="true">
     <Position X="17.5" Y="5.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAgAIAAAAQAAAAgAAAAAAAAAAAAAAAAAACgAAAAEAAA=</HashCode>
+      <HashCode>AAgABAAAAQAAAAAAAAAAAAAAAAAAAAAAACgAAAAAAAA=</HashCode>
       <FileName>Detail.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.Capacitor" Collapsed="true">
     <Position X="12.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAACAAAAAEgAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAACAAAAAEAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Capacitors\Capacitor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.CommProduct" Collapsed="true">
     <Position X="12.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAIAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Commutation products\CommProduct.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.Diode" Collapsed="true">
     <Position X="20.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAABAgAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Diodes\Diode.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.Microcircuit" Collapsed="true">
     <Position X="19.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAgAAAAAEAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Microcircuits\Microcircuit.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Details.Resistor" Collapsed="true">
     <Position X="12.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAEgAAAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
       <FileName>Resistors\Resistor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.Inductance" Collapsed="true">
     <Position X="19.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAEgAAAAAAAQAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAEAEAAAAAAQAAAACAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Inductance.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.Thyristor" Collapsed="true">
     <Position X="21.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAACgAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAACAEAIAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Thyristor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.Transistor" Collapsed="true">
     <Position X="23.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAgAAAAAAAAABAAAAAABARAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAAAABAACAAABARAAAAAAAAA=</HashCode>
       <FileName>Transistor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.ZenerDiode" Collapsed="true">
     <Position X="25.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAgAAAAAAAAAAAACAAAAAAEAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAAAAAAACAAAAAAEAAAAAAAA=</HashCode>
       <FileName>ZenerDiode.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.AnalogMicrocircuit" Collapsed="true">
     <Position X="17.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAgAAAAAAgEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAgAAAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Microcircuits\AnalogMicrocircuit.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.ComputerSystem" Collapsed="true">
     <Position X="19.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAgAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAgAAAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Microcircuits\ComputerSystem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.LogicMicrocircuit" Collapsed="true">
     <Position X="21.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAACAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAACAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Microcircuits\LogicMicrocircuit.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -101,7 +101,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAAAAAAACAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Resistors\AlternateResistor.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -115,77 +115,77 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAAAAAAACAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Resistors\ConstantResistor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.HighFreqConnector" Collapsed="true">
     <Position X="9.5" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAgAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAAAAAAACAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Commutation products\HighFreqConnector.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.LowFreqConnector" Collapsed="true">
     <Position X="11.75" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAEAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAEAAAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Commutation products\LowFreqConnector.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.Relay" Collapsed="true">
     <Position X="14" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAgAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAIAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Commutation products\Relay.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.Switcher" Collapsed="true">
     <Position X="16.25" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAIAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>IAAABAAAAAAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Commutation products\Switcher.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.HighFreqDiode" Collapsed="true">
     <Position X="18" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAgAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAAAABAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Diodes\HighFreqDiode.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.LightDiode" Collapsed="true">
     <Position X="20.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Diodes\LightDiode.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.RectifyingDiode" Collapsed="true">
     <Position X="22.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAAAAAAACAABAAAAAAAAAAAA=</HashCode>
       <FileName>Diodes\RectifyingDiode.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.CeramicCapacitor" Collapsed="true">
     <Position X="10.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Capacitors\CeramicCapacitor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.ElectrolyticCapacitor" Collapsed="true">
     <Position X="12.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEEAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Capacitors\ElectrolyticCapacitor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DetailsLib.MembraneCapacitor" Collapsed="true">
     <Position X="15" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAEEAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Capacitors\MembraneCapacitor.cs</FileName>
     </TypeIdentifier>
   </Class>

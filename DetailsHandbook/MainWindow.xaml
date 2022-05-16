@@ -9,23 +9,44 @@
         Height="600"
         Width="920"
         ResizeMode="NoResize"
-        WindowStyle="SingleBorderWindow"
-        Background="Transparent">
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        Icon="Images\logo4.2.png">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/StylesDictionary.xaml"/>
+                <ResourceDictionary Source="Styles/CustomScrollbarStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <Border Background="#181735">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="0.05*"></RowDefinition>
                 <RowDefinition Height="0.15*"></RowDefinition>
                 <RowDefinition Height="0.15*"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="#100f2b">
+            <StackPanel Orientation="Horizontal" 
+                        FlowDirection="RightToLeft" 
+                        Background="#FF151192"
+                        MouseDown="WindowPanel_MouseDown">
+                <Button Width="20" Content="⨉" FontSize="13" 
+                        x:Name="WindowCloseButton"
+                        Foreground="White" 
+                        Background="Transparent" 
+                        BorderThickness="0"
+                        Click="WindowCloseButton_Click"/>
+                <Button Width="20" Content="🗕" FontSize="13" 
+                        Foreground="White" 
+                        Background="Transparent" 
+                        BorderThickness="0"
+                        x:Name="WindowHideButton"
+                        Click="WindowHideButton_Click"/>
+            </StackPanel>
+            <Grid Grid.Row="1" Background="#100f2b">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.5*"></ColumnDefinition>
                     <ColumnDefinition Width="1.4*"></ColumnDefinition>
@@ -47,26 +68,26 @@
                          Margin="30 0 0 0"
                          Style="{StaticResource CustomTextBox}"/>
 
-                <Button Grid.Column="2" 
+                <local:CustomButton Grid.Column="2" 
                         Height="30"
                         Width="40"
                         Style="{StaticResource GrayButtonStyle}">
                     <Button.Content>
                         <TextBlock Text="🔎" FontSize="12" Foreground="White"/>
                     </Button.Content>
-                </Button>
-                <Button Style="{StaticResource DefaultButton}"  Grid.Column="5" Width="110" Height="40" Background="#535CF5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </local:CustomButton>
+                <local:CustomButton Style="{StaticResource DefaultButton}"  Grid.Column="5" Width="110" Height="40" Background="#535CF5" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button.Content>
                         <TextBlock Text="Добавить деталь"
                                    FontSize="13"
                                    Foreground="White"
                                    FontWeight="DemiBold"/>
                     </Button.Content>
-                </Button>
+                </local:CustomButton>
             </Grid>
-            <Button x:Name="FilterButton"
+            <local:CustomButton x:Name="FilterButton"
                     Grid.Column="0"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Style="{StaticResource GrayButtonStyle}"
                     Width="55"
                     Height="40"
@@ -78,9 +99,9 @@
                            Width="30"
                            Height="35"/>
                 </Button.Content>
-            </Button>
+            </local:CustomButton>
             <TextBlock Grid.Column="1"
-                       Grid.Row="1"
+                       Grid.Row="2"
                            Text="Каталог"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
@@ -88,7 +109,7 @@
                            FontSize="40"
                            FontWeight="DemiBold"/>
             <Grid x:Name="FiltersBar"
-                  Grid.Row="2"
+                  Grid.Row="3"
                   Panel.ZIndex="999"
                   Width="200"
                   Height="360"
@@ -105,20 +126,81 @@
                          29,0,
                          21,8"/>
                 <StackPanel Height="360">
-                    <Button Height="35" Margin="0 10 0 0"/>
-                    <Button Height="35"/>
-                    <Button Height="35"/>
-                    <Button Height="35"/>
-                    <Button Height="35"/>
-                    <Button Height="35"/>
-                    <Button Height="35"/>
-                    <Button Height="35"/>
-                    <Button Height="35"/>
-                    <Button Height="35"/>
+                    <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="NoneFilterCheckBox"
+                                        Click="NoneFilterChexBox_Click">
+                        <Button.Content>
+                            <TextBlock Style="{StaticResource FilterCheckBoxButtonTextStyle}" Text="• Без фильтра"/>
+                        </Button.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Height="35" Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="CapasitorsCheckBox"
+                                        Click="FilterCheckBoxes_Click">
+                        <Button.Content>
+                            <TextBlock Style="{StaticResource FilterCheckBoxButtonTextStyle}" Text="Конденсаторы"/>
+                        </Button.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Height="35" Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="CommProductsCheckBox"
+                                        Click="FilterCheckBoxes_Click">
+                        <Button.Content>
+                            <TextBlock Style="{StaticResource FilterCheckBoxButtonTextStyle}" Text="Комм. изделия"/>
+                        </Button.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Height="35" Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="DiodesCheckBox"
+                                        Click="FilterCheckBoxes_Click">
+                        <Button.Content>
+                            <TextBlock Style="{StaticResource FilterCheckBoxButtonTextStyle}" Text="Диоды"/>
+                        </Button.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Height="35" Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="MicrocircuitsCheckBox"
+                                        Click="FilterCheckBoxes_Click">
+                        <Button.Content>
+                            <TextBlock Style="{StaticResource FilterCheckBoxButtonTextStyle}" Text="Микросхемы"/>
+                        </Button.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Height="35" Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ResistorsCheckBox"
+                                        Click="FilterCheckBoxes_Click">
+                        <Button.Content>
+                            <TextBlock Style="{StaticResource FilterCheckBoxButtonTextStyle}" Text="Резисторы"/>
+                        </Button.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Height="35" Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="InductancesCheckBox"
+                                        Click="FilterCheckBoxes_Click">
+                        <Button.Content>
+                            <TextBlock Style="{StaticResource FilterCheckBoxButtonTextStyle}" Text="Индуктивности"/>
+                        </Button.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Height="35" Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ThyristorsCheckBox"
+                                        Click="FilterCheckBoxes_Click">
+                        <Button.Content>
+                            <TextBlock Style="{StaticResource FilterCheckBoxButtonTextStyle}" Text="Тиристоры"/>
+                        </Button.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Height="35" Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="TransistorsCheckBox"
+                                        Click="FilterCheckBoxes_Click">
+                        <Button.Content>
+                            <TextBlock Style="{StaticResource FilterCheckBoxButtonTextStyle}" Text="Транзисторы"/>
+                        </Button.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Height="35" Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ZenerDiodesCheckBox"
+                                        Click="FilterCheckBoxes_Click">
+                        <Button.Content>
+                            <TextBlock Style="{StaticResource FilterCheckBoxButtonTextStyle}" Text="Стабилитроны"/>
+                        </Button.Content>
+                    </local:CustomButton>
                 </StackPanel>
 
             </Grid>
-            <ScrollViewer Grid.Row="2">
+            <ScrollViewer Grid.Row="3">
                 <StackPanel Grid.Row="2" Width="Auto" Height="Auto">
                     <WrapPanel x:Name="capasitorsWrapPannel" Width="Auto" Margin="0 0 0 20">
                         <TextBlock Text="Конденсаторы" Foreground="White" FontSize="35" Width="900" Margin="26 5 0 0"/>
