@@ -3,10 +3,94 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DetailsHandbook.Windows"
+        xmlns:local="clr-namespace:DetailsHandbook"
         mc:Ignorable="d"
-        Title="DetailsAdditionPanel" Height="550" Width="400">
-    <Grid>
-        
-    </Grid>
+        Height="400" Width="465"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        Icon="..\Images\logo4.2.png">
+    <Window.Resources>
+ 
+    </Window.Resources>
+    <Border Background="#181735">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="22.22"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" 
+                        FlowDirection="RightToLeft" 
+                        Background="#FF151192"
+                        MouseDown="WindowPanel_MouseDown">
+                <Button Width="20" Content="⨉" FontSize="13" 
+                        x:Name="WindowCloseButton"
+                        Foreground="White" 
+                        BorderThickness="0"
+                        Click="WindowCloseButton_Click"
+                        Style="{StaticResource CloseButtonStyle}"/>
+                <Button Width="20" Content="🗕" FontSize="13" 
+                        Foreground="White" 
+                        BorderThickness="0"
+                        x:Name="WindowHideButton"
+                        Click="WindowHideButton_Click"
+                        Style="{StaticResource HideButtonStyle}"/>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Padding="0 7 0 0" Text="Выберите тип детали" Foreground="White" HorizontalAlignment="Center" FontSize="25"/>
+                <WrapPanel Grid.Row="1">
+                    <local:CustomButton Style="{StaticResource DetailButtonStyle}" x:Name="CapacitorAddButton" Click="AddDetailButton_Click">
+                        <local:CustomButton.Content>
+                            <TextBlock Text="Конденсатор" Style="{StaticResource DetailButtonText}"/>
+                        </local:CustomButton.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Style="{StaticResource DetailButtonStyle}" x:Name="CommProductAddButton" Click="AddDetailButton_Click">
+                        <local:CustomButton.Content>
+                            <TextBlock Text="Комм. изделие" Style="{StaticResource DetailButtonText}"/>
+                        </local:CustomButton.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Style="{StaticResource DetailButtonStyle}" x:Name="DiodeAddButton" Click="AddDetailButton_Click">
+                        <local:CustomButton.Content>
+                            <TextBlock Text="Диод" Style="{StaticResource DetailButtonText}"/>
+                        </local:CustomButton.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Style="{StaticResource DetailButtonStyle}" x:Name="MicrocircuitAddButton" Click="AddDetailButton_Click">
+                        <local:CustomButton.Content>
+                            <TextBlock Text="Микросхема" Style="{StaticResource DetailButtonText}"/>
+                        </local:CustomButton.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Style="{StaticResource DetailButtonStyle}" x:Name="ResistorAddButton" Click="AddDetailButton_Click">
+                        <local:CustomButton.Content>
+                            <TextBlock Text="Резистор" Style="{StaticResource DetailButtonText}"/>
+                        </local:CustomButton.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Style="{StaticResource DetailButtonStyle}" x:Name="InductanceAddButton" Click="AddDetailButton_Click">
+                        <local:CustomButton.Content>
+                            <TextBlock Text="Индуктивность" Style="{StaticResource DetailButtonText}"/>
+                        </local:CustomButton.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Style="{StaticResource DetailButtonStyle}" x:Name="ThyristorAddButton" Click="AddDetailButton_Click">
+                        <local:CustomButton.Content>
+                            <TextBlock Text="Тиристор" Style="{StaticResource DetailButtonText}"/>
+                        </local:CustomButton.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Style="{StaticResource DetailButtonStyle}" x:Name="TransistorAddButton" Click="AddDetailButton_Click">
+                        <local:CustomButton.Content>
+                            <TextBlock Text="Транзистор" Style="{StaticResource DetailButtonText}"/>
+                        </local:CustomButton.Content>
+                    </local:CustomButton>
+                    <local:CustomButton Style="{StaticResource DetailButtonStyle}" x:Name="ZenerDiodeAddButton" Click="AddDetailButton_Click">
+                        <local:CustomButton.Content>
+                            <TextBlock Text="Стабилитрон" Style="{StaticResource DetailButtonText}"/>
+                        </local:CustomButton.Content>
+                    </local:CustomButton>
+                </WrapPanel>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>

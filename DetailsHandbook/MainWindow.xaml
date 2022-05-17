@@ -36,15 +36,15 @@
                 <Button Width="20" Content="⨉" FontSize="13" 
                         x:Name="WindowCloseButton"
                         Foreground="White" 
-                        Background="Transparent" 
                         BorderThickness="0"
-                        Click="WindowCloseButton_Click"/>
+                        Click="WindowCloseButton_Click"
+                        Style="{StaticResource CloseButtonStyle}"/>
                 <Button Width="20" Content="🗕" FontSize="13" 
                         Foreground="White" 
-                        Background="Transparent" 
                         BorderThickness="0"
                         x:Name="WindowHideButton"
-                        Click="WindowHideButton_Click"/>
+                        Click="WindowHideButton_Click"
+                        Style="{StaticResource HideButtonStyle}"/>
             </StackPanel>
             <Grid Grid.Row="1" Background="#100f2b">
                 <Grid.ColumnDefinitions>
@@ -76,7 +76,7 @@
                         <TextBlock Text="🔎" FontSize="12" Foreground="White"/>
                     </Button.Content>
                 </local:CustomButton>
-                <local:CustomButton Style="{StaticResource DefaultButton}"  Grid.Column="5" Width="110" Height="40" Background="#535CF5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <local:CustomButton Style="{StaticResource DefaultButton}"  Grid.Column="5" Width="110" Height="40" Background="#535CF5" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddDetailButton_Click">
                     <Button.Content>
                         <TextBlock Text="Добавить деталь"
                                    FontSize="13"

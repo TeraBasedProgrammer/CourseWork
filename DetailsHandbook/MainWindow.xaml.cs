@@ -1,5 +1,6 @@
 ﻿global using DetailsLib;
 global using System.Reflection;
+using DetailsHandbook.Windows;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Windows;
 using System.Windows.Controls;
@@ -121,6 +122,13 @@ namespace DetailsHandbook
         private void DetailButtonClick(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(buttonObjectPairs.GetValueOrDefault((CustomButton)sender).ToString());
+        }
+
+        private void AddDetailButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dap = new DetailsAdditionPanel();
+            dap.Owner = this;
+            dap.Show();
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
