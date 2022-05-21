@@ -126,9 +126,9 @@ namespace DetailsHandbook
 
         private void AddDetailButton_Click(object sender, RoutedEventArgs e)
         {
-            var dap = new DetailsAdditionPanel();
+            var dap = new DetailsAddPanel();
             dap.Owner = this;
-            dap.Show();
+            dap.ShowDialog();
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)

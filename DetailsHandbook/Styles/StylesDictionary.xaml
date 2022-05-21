@@ -1,11 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:DetailsHandbook">
-  
+                    xmlns:local="clr-namespace:DetailsHandbook"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
     <!-- Стиль поля ввода -->
 
+    
     <Style TargetType="{x:Type TextBox}"
            x:Key="CustomTextBox">
+        <Style.Resources>
+            <sys:String x:Key="TextBoxPlaceholder">Поиск</sys:String>
+        </Style.Resources>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -26,7 +31,7 @@
                                      x:Name="SearchBox"/>
 
                             <TextBlock IsHitTestVisible="False"
-                                       Text="Поиск"
+                                       Text="{DynamicResource TextBoxPlaceholder}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
                                        Margin="10 0 0 0"
@@ -88,6 +93,7 @@
     </Style>
 
     <!-- Стиль тёмных кнопок -->
+    
     <Style TargetType="local:CustomButton" x:Key="GrayButtonStyle" BasedOn="{StaticResource DefaultButton}">
         <Style.Resources>
             <SolidColorBrush x:Key="PressedButtonColor">#26252E</SolidColorBrush>
@@ -120,6 +126,12 @@
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Width" Value="150"/>
+    </Style>
+
+    <!-- Стиль текста кнопок для выбора блока детали -->
+    
+    <Style TargetType="TextBlock" x:Key="DetailsCheckBoxButtonTextStyle" BasedOn="{StaticResource FilterCheckBoxButtonTextStyle}">
+        <Setter Property="Width" Value="195"/>
     </Style>
 
     <!-- Стиль кнопок фильтрации -->
@@ -174,16 +186,23 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <!--<Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="CloseButtonStyle">
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Red"/>
-            </Trigger>
-            <Trigger Property="IsMouseDirectlyOver" Value="True">
-                <Setter Property="Background" Value="Red"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>-->
-    
+  
+    <!--Стиль полей ввода данных детали-->
+
+    <Style TargetType="{x:Type TextBox}" x:Key="DetailsDataInputStyle" BasedOn="{StaticResource CustomTextBox}">
+        <Style.Resources>
+            <sys:String x:Key="TextBoxPlaceholder">Введите значение</sys:String>
+        </Style.Resources>
+    </Style>
+
+    <!--Стиль текста возле полей ввода-->
+
+    <Style TargetType="TextBlock" x:Key="LabelTextStyle">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="0 0 10 0"/>
+    </Style>
 
 </ResourceDictionary>

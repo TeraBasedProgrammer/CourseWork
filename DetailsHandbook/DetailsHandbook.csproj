@@ -14,6 +14,9 @@
     <Resource Include="Images\filter2.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\logo2.1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\logo4.2.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -35,15 +38,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DetailsLib\DetailsLib.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Images\logo4.1.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\logo4.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
 
   <ItemGroup>

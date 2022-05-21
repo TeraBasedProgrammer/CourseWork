@@ -11,10 +11,7 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         Icon="..\Images\logo4.2.png">
-    <Window.Resources>
- 
-    </Window.Resources>
-    <Border Background="#181735">
+    <!--<Border Background="#181735">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="22.22"/>
@@ -92,5 +89,5 @@
                 </WrapPanel>
             </Grid>
         </Grid>
-    </Border>
+    </Border>-->
 </Window>

@@ -1,0 +1,1852 @@
+﻿<Window x:Class="DetailsHandbook.Windows.DetailsAddPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:windows ="clr-namespace:DetailsHandbook.Windows"
+        xmlns:local="clr-namespace:DetailsHandbook"
+        mc:Ignorable="d" 
+        Height="580" Width="400"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        Icon="..\Images\logo4.2.png">
+    <Border Background="#181735">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="22.22"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" 
+                        FlowDirection="RightToLeft" 
+                        Background="#FF151192"
+                        MouseDown="WindowPanel_MouseDown">
+                <Button Width="20" Content="⨉" FontSize="13" 
+                        x:Name="WindowCloseButton"
+                        Foreground="White" 
+                        BorderThickness="0"
+                        Click="WindowCloseButton_Click"
+                        Style="{StaticResource CloseButtonStyle}"/>
+                <Button Width="20" Content="🗕" FontSize="13" 
+                        Foreground="White" 
+                        BorderThickness="0"
+                        x:Name="WindowHideButton"
+                        Click="WindowHideButton_Click"
+                        Style="{StaticResource HideButtonStyle}"/>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <local:CustomButton x:Name="DetailsCheckBox"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Style="{StaticResource GrayButtonStyle}"
+                    Width="55"
+                    Height="40"
+                    HorizontalAlignment="Left"
+                    Margin="10 0 0 0"
+                    Click="DetailsCheckBox_Click">
+                    <Button.Content>
+                    <Image Source="..\Images\logo2.1.png"
+                           Width="30"
+                           Height="35"/>
+                    </Button.Content>
+                </local:CustomButton>
+                <StackPanel Width="250" 
+                            HorizontalAlignment="Center"
+                            Grid.Row="0">
+                    <TextBlock Text="Добавить деталь: "
+                               FontSize="20"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               Margin="0 10 0 0">
+                        
+                    </TextBlock>
+                    <TextBlock Text="Переменный резистор"
+                               x:Name="TitleText"
+                               FontSize="20"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               Margin="0 0 0 0">
+                        
+                    </TextBlock>
+                </StackPanel>
+                <Grid x:Name="DetailsBar"
+                  Grid.Row="3"
+                  Panel.ZIndex="999"
+                  Width="230"
+                  Height="360"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  Margin="8 -13 0 0"
+                  Visibility="Hidden">
+                    <Polygon Fill="#353340"
+                         Points="0,8,
+                         0,360,
+                         230,360,
+                         230,8,
+                         37,8,
+                         29,0,
+                         21,8"/>
+                    <ScrollViewer Margin="0 10 0 0">
+                        <StackPanel Height="AUTO" Margin="10 -10 0 0">
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center" 
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="AlternateResistorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock  Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="• Переменный резистор" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="AnalogMicrocircuitButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Аналоговая микросхема"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="CeramicCapacitorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Керам. конденсатор"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ComputerSystemButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="СВС"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ConstantResistorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Постоянный резистор"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ElectrolyticCapacitorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Электролит. конд."/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="HighFreqConnectorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="ВЧ разъём"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="HighFreqDiodeButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="ВЧ диод"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="InductanceButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Индуктивность"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="LightDiodeButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Светодиод"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="LogicMicrocircuitButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Логическая микросхема"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="LowFreqConnectorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="НЧ разъём"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="MembraneCapacitorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Плёночный конденсатор"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="RectifyingDiodeButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Выпрямительный диод"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="RelayButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Реле"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="SwitcherButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Тумблер"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ThyristorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Тиристор"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="TransistorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Транзистор"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                            <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ZenerDiodeButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                <Button.Content>
+                                    <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Стабилитрон"/>
+                                </Button.Content>
+                            </local:CustomButton>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <StackPanel Grid.Row="1">
+                    <Grid Height="485" Visibility="Visible" x:Name="AlternateResistorAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Мощность:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Номинал:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Допуск:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="7" 
+                                   Text="Тип прокрутки:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="7"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="AnalogMicrocircuitAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Напряжение питания:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Тип корпуса:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Функ. наз.:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="CeramicCapacitorAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Номинал:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Раб. напряжение:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Допуск:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="7" 
+                                   Text="ТКЕ:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="7"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="ComputerSystemAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Напряжение питания:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Тип корпуса:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Функ. наз.:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="ConstantResistorAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Мощность:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Номинал:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Допуск:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="7" 
+                                   Text="Тип:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="7"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="ElectrolyticCapacitorAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Номинал:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Раб. напряжение:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Допуск:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="7" 
+                                   Text="Тип обкладок:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="7"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="HighFreqConnectorAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Макс. комм. напр.:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Волновое сопр.:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="HighFreqDiodeAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>       
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Граничный точ:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Граничное напряжение:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Граничная частота:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="InductanceAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Номинал:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Раб. напряжение:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Допуск:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="LightDiodeAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Граничный точ:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Граничное напряжение:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Сила света:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="LogicMicrocircuitAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Напряжение питания:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Тип корпуса:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Логическая орг.:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="LowFreqConnectorAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Макс. комм. напр.:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Тип:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="MembraneCapacitorAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Номинал:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Раб. напряжение:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Допуск:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="7" 
+                                   Text="Тип обкладок:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="7"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="RectifyingDiodeAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                            <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                            <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                            <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                            <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Граничный точ:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                            <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Граничное напряжение:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                            <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Обратный ток:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                            <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                            <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                            <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                            <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                            <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                            <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                            <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                            <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="RelayAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Макс. комм. напр.:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Напряжение обмотки:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="SwitcherAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Макс. комм. напр.:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Тип:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="ThyristorAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Напряжение:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Ток:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="TransistorAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Тип:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Мощность:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="6" 
+                                   Text="Граничная частота:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="7" 
+                                   Text="НЧ / ВЧ:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="6"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="7"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                    <Grid Height="485" Visibility="Collapsed" x:Name="ZenerDiodeAddBlock"> <!---->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   Text="Модель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="1" 
+                                   Text="Производитель:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="2" 
+                                   Text="Цена:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="3" 
+                                   Text="Аналог:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="4" Text="Напряжение стаб.:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="5" Text="Ток стаб.:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="0"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="2"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="3"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="4"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <TextBox Grid.Column="1" 
+                                 Grid.Row="5"
+                                 Style="{StaticResource DetailsDataInputStyle}"
+                                 Margin="0 0 15 0"/>
+                        <local:CustomButton Grid.Column="1"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5">
+                            <local:CustomButton.Content>
+                                <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+                            </local:CustomButton.Content>
+                        </local:CustomButton>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
