@@ -80,7 +80,7 @@
                                  Style="{StaticResource DetailsDataInputStyle}"
                                  Margin="0 0 15 0"/>
         <TextBox Grid.Column="1" 
-                  x:Name="WorkCurrTextBox"
+                  x:Name="WorkVoltageTextBox"
                                  Grid.Row="5"
                                  Style="{StaticResource DetailsDataInputStyle}"
                                  Margin="0 0 15 0"/>

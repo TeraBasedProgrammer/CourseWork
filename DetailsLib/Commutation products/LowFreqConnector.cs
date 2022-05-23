@@ -10,6 +10,11 @@ namespace DetailsLib
     {
         private const string detailType = "НЧ разъём";
 
+        public LowFreqConnector() : base()
+        {
+            ConnectorType = "Undefined";
+        }
+
         public LowFreqConnector(string model, string manuf, double price, string intchab, int maxCommVolt, string connType) :
             base(model, manuf, price, intchab, maxCommVolt)
         {

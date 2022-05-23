@@ -13,6 +13,11 @@ namespace DetailsLib
     {
         private const string detailType = "Керамический конденсатор";
 
+        public CeramicCapacitor() : base()
+        {
+            Tcc = "Undefined";
+        }
+
         public CeramicCapacitor(string model, string manuf, double price, string intchab, double nominal, int workVolt, int access, string tcc) :
             base(model, manuf, price, intchab, nominal, workVolt, access)
         {

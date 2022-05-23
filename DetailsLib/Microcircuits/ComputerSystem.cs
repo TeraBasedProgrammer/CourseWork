@@ -10,6 +10,11 @@ namespace DetailsLib
     {
         private const string detailType = "Схема вычислительной системы";
 
+        public ComputerSystem() : base()
+        {
+            FunctionalPurpose = "Undefined";
+        }
+
         public ComputerSystem(string model, string manuf, double price, string intchab, string supVolt, string caseType, string funcPurp)
             : base(model, manuf, price, intchab, supVolt, caseType)
         {

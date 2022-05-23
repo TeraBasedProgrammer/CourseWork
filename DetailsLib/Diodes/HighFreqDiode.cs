@@ -10,6 +10,11 @@ namespace DetailsLib
     {
         private const string detailType = "ВЧ диод";
 
+        public HighFreqDiode() : base()
+        {
+            CutoffFreq = 0;
+        }
+
         public HighFreqDiode(string model, string manuf, double price, string intchab, double cutoffCurr, int cutoffVolt, int cutoffFreq)
             : base(model, manuf, price, intchab, cutoffCurr, cutoffVolt)
         {

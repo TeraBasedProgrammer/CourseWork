@@ -10,6 +10,11 @@ namespace DetailsLib
     {
         private const string detailType = "Стабилитрон";
 
+        public ZenerDiode() : base()
+        {
+            StabilizationVoltage = 0;
+            StabilizationCurrent = 0;
+        }
         public ZenerDiode(string model, string manuf, double price, string intchab, double stabVolt, int stabCurr)
             : base(model, manuf, price, intchab)
         {

@@ -10,6 +10,11 @@ namespace DetailsLib
     {
         private const string detailType = "Плёночный конденсатор";
 
+        public MembraneCapacitor() : base()
+        {
+            PlateType = "Undefined";
+        }
+
         public MembraneCapacitor(string model, string manuf, double price, string intchab, double nominal, int workVolt, int access, string plateType) :
             base(model, manuf, price, intchab, nominal, workVolt, access)
         {

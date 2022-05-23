@@ -6,6 +6,11 @@ namespace DetailsLib
     {
         private const string detailType = "Индуктивность";
 
+        public Thyristor() : base()
+        {
+            DcVoltageInClosedCase = 0;
+            DCurrentInOpenCase = 0;
+        }
         public Thyristor(string model, string manuf, double price, string intchab, int volt, double curr)
            : base(model, manuf, price, intchab)
         {

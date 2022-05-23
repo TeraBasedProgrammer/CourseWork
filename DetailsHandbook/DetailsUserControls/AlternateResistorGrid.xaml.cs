@@ -88,20 +88,19 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                AlternateResistor ar = new();
-                ar.Model = ModelTextBox.Text;
-                ar.Manufacturer = ManufTextBox.Text;
-                ar.Price = detailPrice;
-                ar.Interchangeability = IntchabTextBox.Text;
-                ar.Power = detailPower;
-                ar.Nominal = detailNominal;
-                ar.Access = detailAccess;
-                ar.SpinType = SpinTypeTextBox.Text;
-                using (DetailsDbContext db = new DetailsDbContext())
-                {
-                    db.AlternateResistors.Add(ar);
-                    db.SaveChanges();
-                }
+                //using (DetailsDbContext db = new DetailsDbContext())
+                //{
+                //    AlternateResistor ar = new(ModelTextBox.Text, 
+                //        ManufTextBox.Text, 
+                //        detailPrice, 
+                //        IntchabTextBox.Text, 
+                //        detailPower, 
+                //        detailNominal, 
+                //        detailAccess, 
+                //        SpinTypeTextBox.Text);
+                //    db.AlternateResistors.Add(ar);
+                //    db.SaveChanges();
+                //}
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

@@ -8,6 +8,12 @@ namespace DetailsLib
 {
     public class Capacitor : Detail
     {
+        public Capacitor() : base()
+        {
+            Nominal = 0;
+            WorkingVoltage = 0;
+            Access = 0;
+        }
         public Capacitor(string model, string manuf, double price, string intchab, double nominal, int workVolt, int access) : base(model, manuf, price, intchab)
         {
             Nominal = nominal;

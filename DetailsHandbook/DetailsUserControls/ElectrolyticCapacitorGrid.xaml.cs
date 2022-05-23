@@ -34,20 +34,68 @@ namespace DetailsHandbook
             localTextBoxes.Add(PriceTextBox);
             localTextBoxes.Add(IntchabTextBox);
             localTextBoxes.Add(NominalTextBox);
-            localTextBoxes.Add(WorkCurrTextBox);
+            localTextBoxes.Add(WorkVoltageTextBox);
             localTextBoxes.Add(AccessTextBox);
             localTextBoxes.Add(PlateTypeTextBox);
         }
 
         private void DetailAddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckMethods.IsFilled(localTextBoxes))
+            int[] allInputIsCorrect = { 1, 1, 1, 1, 1 };
+            double detailPrice = 0;
+            double detailNominal = 0;
+            int detailWorkVolt = 0;
+            int detailAccess = 0;
+            if (!CheckMethods.IsFilled(localTextBoxes))
             {
-                MessageBox.Show("Деталь успешно добавлена!");
-                CheckMethods.TextBoxClear(localTextBoxes);
+                MessageBox.Show("Заполните все поля");
+                return;
+            }
+            else if (CheckMethods.HasManyCharacters(ref localTextBoxes))
+            {
+                MessageBox.Show("Вы ввели недопустимое кол-во символов в поле ввода");
+                return;
             }
             else
-                MessageBox.Show("Заполните все поля");
+            {
+                if (!CheckMethods.CheckModel(ModelTextBox.Text))
+                {
+                    ModelTextBox.Text = "";
+                    allInputIsCorrect[0] = 0;
+                }
+                if (!CheckMethods.CheckDoubleInput(PriceTextBox.Text, ref detailPrice))
+                {
+                    PriceTextBox.Text = "";
+                    allInputIsCorrect[1] = 0;
+                }
+                if (!CheckMethods.CheckIntInput(AccessTextBox.Text, ref detailWorkVolt))
+                {
+                    WorkVoltageTextBox.Text = "";
+                    allInputIsCorrect[2] = 0;
+                }
+                if (!CheckMethods.CheckDoubleInput(NominalTextBox.Text, ref detailNominal))
+                {
+                    NominalTextBox.Text = "";
+                    allInputIsCorrect[3] = 0;
+                }
+                if (!CheckMethods.CheckIntInput(AccessTextBox.Text, ref detailAccess))
+                {
+                    AccessTextBox.Text = "";
+                    allInputIsCorrect[4] = 0;
+                }
+            }
+
+            if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
+            {
+                //using (DetailsDbContext db = new DetailsDbContext())
+                //{
+                //    ElectrolyticCapacitor ec = new(ModelTextBox.Text, ManufTextBox.Text, detailPrice, IntchabTextBox.Text, detailNominal, detailWorkVolt, detailAccess, PlateTypeTextBox.Text);
+                //    db.ElectrolyticCapacitors.Add(ec);
+                //    db.SaveChanges();
+                //}
+                CheckMethods.TextBoxClear(localTextBoxes);
+                MessageBox.Show("Деталь успешно добавлена!");
+            }
         }
     }
 }

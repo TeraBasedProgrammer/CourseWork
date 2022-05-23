@@ -10,6 +10,11 @@ namespace DetailsLib
     {
         private const string detailType = "Тумблер";
 
+        public Switcher() : base()
+        {
+            SwitchType = "Undefined";
+        }
+
         public Switcher(string model, string manuf, double price, string intchab, int maxCommVolt, string switchType) :
             base(model, manuf, price, intchab, maxCommVolt)
         {

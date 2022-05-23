@@ -40,15 +40,22 @@
                                    Text="Аналог:"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
-                                   Grid.Row="4" Text="Мощность:"
+                                   Grid.Row="4" 
+                                   Text="Мощность:"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
-                                   Grid.Row="5" Text="Номинал:"
+                                   Grid.Row="5" 
+                                   Text="Номинал:"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="6" 
                                    Text="Допуск:"
                                    Style="{StaticResource LabelTextStyle}"/>
+        <TextBlock Grid.Column="0" 
+                                   Grid.Row="7" 
+                                   Text="Тип:"
+                                   Style="{StaticResource LabelTextStyle}"/>
+        
         <TextBox Grid.Column="1" 
                  x:Name="ModelTextBox"
                                  Grid.Row="0"

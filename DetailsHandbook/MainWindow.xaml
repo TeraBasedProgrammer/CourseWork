@@ -76,7 +76,14 @@
                         <TextBlock Text="🔎" FontSize="12" Foreground="White"/>
                     </Button.Content>
                 </local:CustomButton>
-                <local:CustomButton Style="{StaticResource DefaultButton}"  Grid.Column="5" Width="110" Height="40" Background="#535CF5" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddDetailButton_Click">
+                <local:CustomButton Style="{StaticResource DefaultButton}" 
+                                    Grid.Column="5" 
+                                    Width="110" 
+                                    Height="40" 
+                                    Background="#535CF5" 
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center" 
+                                    Click="AddDetailButton_Click">
                     <Button.Content>
                         <TextBlock Text="Добавить деталь"
                                    FontSize="13"

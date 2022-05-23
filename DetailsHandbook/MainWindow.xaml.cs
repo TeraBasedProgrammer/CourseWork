@@ -15,7 +15,7 @@ using System;
 
 namespace DetailsHandbook
 {
-    // При закрытии окна добавления детали снова вызывать Render. Как? А хуй знает, потом разберусь
+    // При закрытии окна добавления детали снова вызывать Render. Как? А хуй знает, потом ро
     public partial class MainWindow : Window
     {
         private Dictionary<CustomButton, Detail> buttonObjectPairs = new();

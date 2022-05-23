@@ -10,6 +10,11 @@ namespace DetailsLib
     {
         private const string detailType = "ВЧ разъём";
 
+        public HighFreqConnector() : base()
+        {
+            WaveResistance = 0;
+        }
+
         public HighFreqConnector(string model, string manuf, double price, string intchab, int maxCommVolt, int waveRes) :
             base(model, manuf, price, intchab, maxCommVolt)
         {

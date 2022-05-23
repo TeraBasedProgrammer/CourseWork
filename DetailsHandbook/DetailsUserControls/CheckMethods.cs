@@ -91,5 +91,12 @@ namespace DetailsHandbook
             }
             return true;
         }
+
+        // Метод проверки наличия числа в ведённой строке (для величин, хранящихся в переменной типа string)
+
+        //public static bool HasNumber(string inputString)
+        //{
+
+        //}
     }
 }

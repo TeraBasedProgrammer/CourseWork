@@ -10,6 +10,11 @@ namespace DetailsLib
     {
         private const string detailType = "Реле";
 
+        public Relay() : base()
+        {
+            WindingWorkVoltage = 0;
+        }
+
         public Relay(string model, string manuf, double price, string intchab, int maxCommVolt, int windWorkVolt) :
             base(model, manuf, price, intchab, maxCommVolt)
         {

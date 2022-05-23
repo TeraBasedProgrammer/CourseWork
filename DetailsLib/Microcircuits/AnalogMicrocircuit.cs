@@ -10,6 +10,11 @@ namespace DetailsLib
     {
         private const string detailType = "Аналоговая микросхема";
 
+        public AnalogMicrocircuit() : base()
+        {
+            FunctionalPurpose = "Undefined";
+        }
+
         public AnalogMicrocircuit(string model, string manuf, double price, string intchab, string supVolt, string caseType, string funcPurp)
             : base(model, manuf, price, intchab, supVolt, caseType)
         {

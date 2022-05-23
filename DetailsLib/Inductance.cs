@@ -10,6 +10,12 @@ namespace DetailsLib
     {
         private const string detailType = "Индуктивность";
 
+        public Inductance() : base()
+        {
+            Nominal = 0;
+            WorkingCurrent = 0;
+            Access = 0;
+        }
         public Inductance(string model, string manuf, double price, string intchab, int nominal, double workCurr, int access)
             : base(model, manuf, price, intchab)
         {

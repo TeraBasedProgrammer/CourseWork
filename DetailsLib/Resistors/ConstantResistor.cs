@@ -10,6 +10,11 @@ namespace Details
     {
         public const string detailType = "Постоянный резистор";
 
+        public ConstantResistor() : base()
+        {
+            Type = "Undefined";
+        }
+
         public ConstantResistor(string model, string manuf, double price, string intchab, double power, double nominal, double access, string type)
             : base(model, manuf, price, intchab, power, nominal, access)
         {

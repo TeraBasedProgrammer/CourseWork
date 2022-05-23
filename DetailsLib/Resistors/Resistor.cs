@@ -8,6 +8,12 @@ namespace Details
 {
     public class Resistor : Detail
     {
+        public Resistor() : base()
+        {
+            Power = 0;
+            Nominal = 0;
+            Access = 0;
+        }
         public Resistor(string model, string manuf, double price, string intchab, double power, double nominal, double access)
             : base(model, manuf, price, intchab)
         {

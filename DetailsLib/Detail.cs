@@ -6,6 +6,13 @@ namespace DetailsLib
 {
     public class Detail
     {
+        public Detail()
+        {
+            Model = "Undefined";
+            Manufacturer = "Undefined";
+            Price = 0;
+            Interchangeability = "Undefined";
+        }
         public Detail(string model, string manuf, double price, string intchab)
         {
             Model = model;

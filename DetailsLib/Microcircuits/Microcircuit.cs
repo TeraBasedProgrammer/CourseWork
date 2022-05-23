@@ -8,6 +8,11 @@ namespace DetailsLib
 {
     public class Microcircuit : Detail
     {
+        public Microcircuit() : base()
+        {
+            SupplyVoltage = "Undefined";
+            CaseType = "Undefined";
+        }
         public Microcircuit(string model, string manuf, double price, string intchab, string supVolt, string caseType)
             : base(model, manuf, price, intchab)
         {

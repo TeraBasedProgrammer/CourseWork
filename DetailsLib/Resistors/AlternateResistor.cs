@@ -10,6 +10,11 @@ namespace Details
     {
         public const string detailType = "Переменный резистор";
 
+        public AlternateResistor() : base()
+        {
+            SpinType = "Undefined";
+        }
+
         public AlternateResistor(string model, string manuf, double price, string intchab, double power, double nominal, double access, string spinType)
             : base(model, manuf, price, intchab, power, nominal, access)
         {

@@ -39,13 +39,60 @@ namespace DetailsHandbook
 
         private void DetailAddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckMethods.IsFilled(localTextBoxes))
+            int[] allInputIsCorrect = { 1, 1, 1 };
+            double detailPrice = 0;
+            double detailStabVolt= 0;
+            int detailStabCurr = 0;
+            if (!CheckMethods.IsFilled(localTextBoxes))
             {
-                MessageBox.Show("Деталь успешно добавлена!");
-                CheckMethods.TextBoxClear(localTextBoxes);
+                MessageBox.Show("Заполните все поля");
+                return;
+            }
+            else if (CheckMethods.HasManyCharacters(ref localTextBoxes))
+            {
+                MessageBox.Show("Вы ввели недопустимое кол-во символов в поле ввода");
+                return;
             }
             else
-                MessageBox.Show("Заполните все поля");
+            {
+                if (!CheckMethods.CheckModel(ModelTextBox.Text))
+                {
+                    ModelTextBox.Text = "";
+                    allInputIsCorrect[0] = 0;
+                }
+                if (!CheckMethods.CheckDoubleInput(PriceTextBox.Text, ref detailPrice))
+                {
+                    PriceTextBox.Text = "";
+                    allInputIsCorrect[1] = 0;
+                }
+                if (!CheckMethods.CheckDoubleInput(StabVoltTextBox.Text, ref detailStabVolt))
+                {
+                    StabVoltTextBox.Text = "";
+                    allInputIsCorrect[2] = 0;
+                }
+                if (!CheckMethods.CheckIntInput(StabCurrTextBox.Text, ref detailStabCurr))
+                {
+                    StabCurrTextBox.Text = "";
+                    allInputIsCorrect[3] = 0;
+                }
+            }
+
+            if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
+            {
+                //using (DetailsDbContext db = new DetailsDbContext())
+                //{
+                //    ZenerDiode zd = new(ModelTextBox.Text,
+                //        ManufTextBox.Text,
+                //        detailPrice,
+                //        IntchabTextBox.Text,
+                //        detailStabVolt,
+                //        detailStabCurr);
+                //    db.ZenerDiodes.Add(zd);
+                //    db.SaveChanges();
+                //}
+                CheckMethods.TextBoxClear(localTextBoxes);
+                MessageBox.Show("Деталь успешно добавлена!");
+            }
         }
     }
 }

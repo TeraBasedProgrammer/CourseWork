@@ -41,13 +41,65 @@ namespace DetailsHandbook
 
         private void DetailAddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckMethods.IsFilled(localTextBoxes))
+            int[] allInputIsCorrect = { 1, 1, 1, 1, 1 };
+            double detailPrice = 0;
+            double detailPower = 0;
+            double detailNominal = 0;
+            double detailAccess = 0;
+            if (!CheckMethods.IsFilled(localTextBoxes))
             {
-                MessageBox.Show("Деталь успешно добавлена!");
-                CheckMethods.TextBoxClear(localTextBoxes);
+                MessageBox.Show("Заполните все поля");
+                return;
+            }
+            else if (CheckMethods.HasManyCharacters(ref localTextBoxes))
+            {
+                MessageBox.Show("Вы ввели недопустимое кол-во символов в поле ввода");
+                return;
             }
             else
-                MessageBox.Show("Заполните все поля");
+            {
+                if (!CheckMethods.CheckModel(ModelTextBox.Text))
+                {
+                    ModelTextBox.Text = "";
+                    allInputIsCorrect[0] = 0;
+                }
+                if (!CheckMethods.CheckDoubleInput(PriceTextBox.Text, ref detailPrice))
+                {
+                    PriceTextBox.Text = "";
+                    allInputIsCorrect[1] = 0;
+                }
+                if (!CheckMethods.CheckDoubleInput(PowerTextBox.Text, ref detailPower))
+                {
+                    PowerTextBox.Text = "";
+                    allInputIsCorrect[2] = 0;
+                }
+                if (!CheckMethods.CheckDoubleInput(NominalTextBox.Text, ref detailNominal))
+                {
+                    NominalTextBox.Text = "";
+                    allInputIsCorrect[3] = 0;
+                }
+                if (!CheckMethods.CheckDoubleInput(AccessTextBox.Text, ref detailAccess))
+                {
+                    AccessTextBox.Text = "";
+                    allInputIsCorrect[4] = 0;
+                }
+            }
+
+            if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
+            {
+                //using (DetailsDbContext db = new DetailsDbContext())
+                //{
+                //    ConstantResistor cr = new(ModelTextBox.Text, 
+                //        ManufTextBox.Text, detailPrice, 
+                //        IntchabTextBox.Text, detailPower, 
+                //        detailNominal, detailAccess, 
+                //        TypeTextBox.Text);
+                //    db.ConstantResistor.Add(cr);
+                //    db.SaveChanges();
+                //}
+                CheckMethods.TextBoxClear(localTextBoxes);
+                MessageBox.Show("Деталь успешно добавлена!");
+            }
         }
     }
 }

@@ -41,13 +41,56 @@ namespace DetailsHandbook
 
         private void DetailAddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckMethods.IsFilled(localTextBoxes))
+            int[] allInputIsCorrect = { 1, 1, 1};
+            double detailPrice = 0;
+            int detailCutoffFreq = 0;
+            if (!CheckMethods.IsFilled(localTextBoxes))
             {
-                MessageBox.Show("Деталь успешно добавлена!");
-                CheckMethods.TextBoxClear(localTextBoxes);
+                MessageBox.Show("Заполните все поля");
+                return;
+            }
+            else if (CheckMethods.HasManyCharacters(ref localTextBoxes))
+            {
+                MessageBox.Show("Вы ввели недопустимое кол-во символов в поле ввода");
+                return;
             }
             else
-                MessageBox.Show("Заполните все поля");
+            {
+                if (!CheckMethods.CheckModel(ModelTextBox.Text))
+                {
+                    ModelTextBox.Text = "";
+                    allInputIsCorrect[0] = 0;
+                }
+                if (!CheckMethods.CheckDoubleInput(PriceTextBox.Text, ref detailPrice))
+                {
+                    PriceTextBox.Text = "";
+                    allInputIsCorrect[1] = 0;
+                }
+                if (!CheckMethods.CheckIntInput(CutoffFreqTextBox.Text, ref detailCutoffFreq))
+                {
+                    CutoffFreqTextBox.Text = "";
+                    allInputIsCorrect[2] = 0;
+                }
+            }
+
+            if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
+            {
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    Transistor tr = new(ModelTextBox.Text,
+                        ManufTextBox.Text,
+                        detailPrice,
+                        IntchabTextBox.Text,
+                        TypeTextBox.Text,
+                        PowerTextBox.Text,
+                        detailCutoffFreq,
+                        HighOrLowFreqTextBox.Text);
+                    db.Transistors.Add(tr);
+                    db.SaveChanges();
+                }
+                CheckMethods.TextBoxClear(localTextBoxes);
+                MessageBox.Show("Деталь успешно добавлена!");
+            }
         }
     }
 }

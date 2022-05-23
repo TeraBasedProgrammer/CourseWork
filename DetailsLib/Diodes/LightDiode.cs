@@ -10,6 +10,11 @@ namespace DetailsLib
     {
         private const string detailType = "Светодиод";
 
+        public LightDiode() : base()
+        {
+            LightPower = 0;
+        }
+
         public LightDiode(string model, string manuf, double price, string intchab, double cutoffCurr, int cutoffVolt, double lightPow)
             : base(model, manuf, price, intchab, cutoffCurr, cutoffVolt)
         {

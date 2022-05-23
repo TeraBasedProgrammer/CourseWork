@@ -10,6 +10,11 @@ namespace DetailsLib
     {
         private const string detailType = "Логическая микросхема";
 
+        public LogicMicrocircuit() : base()
+        {
+            LogicOrganization = "Undefined";
+        }
+
         public LogicMicrocircuit(string model, string manuf, double price, string intchab, string supVolt, string caseType, string logicOrg)
             : base(model, manuf, price, intchab, supVolt, caseType)
         {

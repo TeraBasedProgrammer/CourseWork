@@ -10,6 +10,13 @@ namespace DetailsLib
     {
         private const string detailType = "Транзистор";
 
+        public Transistor() : base()
+        {
+            Type = "Undefined";
+            Power = "Undefined";
+            CutoffFreq = 0;
+            HighOrLowFreq = "Undefined";
+        }
         public Transistor(string model, string manuf, double price, string intchab, string type, string power, int cutoffFreq, string highOrLowFreq)
             : base(model, manuf, price, intchab)
         {
