@@ -9,12 +9,15 @@ namespace Details
     public sealed class AlternateResistor : Resistor
     {
         public const string detailType = "Переменный резистор";
-        public string SpinType { get; set; }
-       
-        public AlternateResistor() : base()
+
+        public AlternateResistor(string model, string manuf, double price, string intchab, double power, double nominal, double access, string spinType)
+            : base(model, manuf, price, intchab, power, nominal, access)
         {
-            SpinType = "Undefined";
+            SpinType = spinType;
         }
+
+        public string SpinType { get; set; }
+          
         public override string ToString()
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nМощность: {Power}Вт\nНоминал: {Nominal}кОм\nДопуск: {Access}%\nИсполнение: {SpinType}\n--------------------------------------------\n";

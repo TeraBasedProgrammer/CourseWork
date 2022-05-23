@@ -13,13 +13,16 @@ namespace DetailsLib
     {
         private const string detailType = "Керамический конденсатор";
 
+        public CeramicCapacitor(string model, string manuf, double price, string intchab, double nominal, int workVolt, int access, string tcc) :
+            base(model, manuf, price, intchab, nominal, workVolt, access)
+        {
+            Tcc = tcc;
+        }
+
+
         // Температурный коэффициент ёмкости
         public string Tcc { get; set; }
-        
-        public CeramicCapacitor() : base()
-        {
-            Tcc = "Undefined";
-        }
+          
         public override string ToString()
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНоминал: {Nominal}нФ\nРабочее напряжение: {WorkingVoltage}В\nДопуск: {Access}%\nТКЕ: {Tcc}\n--------------------------------------------\n";

@@ -10,12 +10,15 @@ namespace DetailsLib
     {
         private const string detailType = "Реле";
 
+        public Relay(string model, string manuf, double price, string intchab, int maxCommVolt, int windWorkVolt) :
+            base(model, manuf, price, intchab, maxCommVolt)
+        {
+            WindingWorkVoltage = windWorkVolt;
+        }
+
+
         public int WindingWorkVoltage { get; set; }
          
-        public Relay() : base()
-        {
-            WindingWorkVoltage = 0;
-        }
         public override string ToString()
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nНапряжение обмотки: {WindingWorkVoltage}В\n--------------------------------------------\n";

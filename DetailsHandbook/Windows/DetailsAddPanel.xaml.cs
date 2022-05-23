@@ -19,7 +19,7 @@ namespace DetailsHandbook.Windows
     /// </summary>
     public partial class DetailsAddPanel : Window
     {
-        private Dictionary<CustomButton, Grid> detailBlockPairs = new();
+        private Dictionary<CustomButton, UserControl>  checkBoxGridPairs = new();
         public DetailsAddPanel()
         {
             InitializeComponent();
@@ -28,30 +28,30 @@ namespace DetailsHandbook.Windows
 
         private void AddDetailsCheckboxes()
         {
-            detailBlockPairs.Add(AlternateResistorButton, AlternateResistorAddBlock);
-            detailBlockPairs.Add(AnalogMicrocircuitButton, AnalogMicrocircuitAddBlock);
-            detailBlockPairs.Add(CeramicCapacitorButton, CeramicCapacitorAddBlock);
-            detailBlockPairs.Add(ComputerSystemButton, ComputerSystemAddBlock);
-            detailBlockPairs.Add(ConstantResistorButton, ConstantResistorAddBlock);
-            detailBlockPairs.Add(ElectrolyticCapacitorButton, ElectrolyticCapacitorAddBlock);
-            detailBlockPairs.Add(HighFreqConnectorButton, HighFreqConnectorAddBlock);
-            detailBlockPairs.Add(HighFreqDiodeButton, HighFreqDiodeAddBlock);
-            detailBlockPairs.Add(InductanceButton, InductanceAddBlock);
-            detailBlockPairs.Add(LightDiodeButton, LightDiodeAddBlock);
-            detailBlockPairs.Add(LogicMicrocircuitButton, LogicMicrocircuitAddBlock);
-            detailBlockPairs.Add(LowFreqConnectorButton, LowFreqConnectorAddBlock);
-            detailBlockPairs.Add(MembraneCapacitorButton, MembraneCapacitorAddBlock);
-            detailBlockPairs.Add(RectifyingDiodeButton, RectifyingDiodeAddBlock);
-            detailBlockPairs.Add(RelayButton, RelayAddBlock);
-            detailBlockPairs.Add(SwitcherButton, SwitcherAddBlock);
-            detailBlockPairs.Add(ThyristorButton, ThyristorAddBlock);
-            detailBlockPairs.Add(TransistorButton, TransistorAddBlock);
-            detailBlockPairs.Add(ZenerDiodeButton, ZenerDiodeAddBlock);
+            checkBoxGridPairs.Add(AlternateResistorButton, AlternateResistorGrid);
+            checkBoxGridPairs.Add(AnalogMicrocircuitButton, AnalogMicrocircuitGrid);
+            checkBoxGridPairs.Add(CeramicCapacitorButton, CeramicCapacitorGrid);
+            checkBoxGridPairs.Add(ComputerSystemButton, ComputerSystemGrid);
+            checkBoxGridPairs.Add(ConstantResistorButton, ConstantResistorGrid);
+            checkBoxGridPairs.Add(ElectrolyticCapacitorButton, ElectrolyticCapacitorGrid);
+            checkBoxGridPairs.Add(HighFreqConnectorButton, HighFreqConnectorGrid);
+            checkBoxGridPairs.Add(HighFreqDiodeButton, HighFreqDiodeGrid);
+            checkBoxGridPairs.Add(InductanceButton, InductanceGrid);
+            checkBoxGridPairs.Add(LightDiodeButton,LightDiodeGrid);
+            checkBoxGridPairs.Add(LogicMicrocircuitButton, LogicMicrocircuitGrid);
+            checkBoxGridPairs.Add(LowFreqConnectorButton, LowFreqConnectorGrid); 
+            checkBoxGridPairs.Add(MembraneCapacitorButton, MembraneCapacitorGrid);
+            checkBoxGridPairs.Add(RectifyingDiodeButton, RectifyingDiodeGrid);
+            checkBoxGridPairs.Add(RelayButton, RelayGrid);
+            checkBoxGridPairs.Add(SwitcherButton, SwitcherGrid);
+            checkBoxGridPairs.Add(ThyristorButton, ThyristorGrid);
+            checkBoxGridPairs.Add(TransistorButton, TransistorGrid);
+            checkBoxGridPairs.Add(ZenerDiodeButton, ZenerDiodeGrid);
         }
 
         private void ClearDetailPoint()
         {
-            foreach (CustomButton button in detailBlockPairs.Keys)
+            foreach (CustomButton button in checkBoxGridPairs.Keys)
             {
                 TextBlock temp = (TextBlock)button.Content;
                 if (temp.Text.Contains("• "))
@@ -65,15 +65,15 @@ namespace DetailsHandbook.Windows
 
         private void ShowAddBlock(CustomButton value)
         {
-            foreach (Grid block in detailBlockPairs.Values)
+            foreach(UserControl uc in checkBoxGridPairs.Values)
             {
-                if(block.Visibility == Visibility.Visible)
+                if (uc.Visibility == Visibility.Visible)
                 {
-                    block.Visibility = Visibility.Collapsed;
+                    uc.Visibility = Visibility.Collapsed;
                     break;
                 }
             }
-            detailBlockPairs.GetValueOrDefault(value).Visibility = Visibility.Visible;
+            checkBoxGridPairs.GetValueOrDefault(value).Visibility = Visibility.Visible;
         }
 
         private void WindowPanel_MouseDown(object sender, MouseButtonEventArgs e)

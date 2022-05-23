@@ -9,13 +9,15 @@ namespace DetailsLib
     public sealed class LowFreqConnector : CommProduct
     {
         private const string detailType = "НЧ разъём";
-        public string ConnectorType { get; set; }
-        
-        
-        public LowFreqConnector() : base()
+
+        public LowFreqConnector(string model, string manuf, double price, string intchab, int maxCommVolt, string connType) :
+            base(model, manuf, price, intchab, maxCommVolt)
         {
-            ConnectorType = "Undefined";
+            ConnectorType = connType;
         }
+
+        public string ConnectorType { get; set; }
+       
         public override string ToString()
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nТип: {ConnectorType}\n--------------------------------------------\n";

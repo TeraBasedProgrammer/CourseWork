@@ -8,11 +8,11 @@ namespace DetailsLib
 {
     public class CommProduct : Detail
     {
-        public int MaxCommVoltage { get; set; }
-        
-        public CommProduct() : base()
+        public CommProduct(string model, string manuf, double price, string intchab, int maxCommVolt) :
+            base(model, manuf, price, intchab)
         {
-            MaxCommVoltage = 0;
+            MaxCommVoltage = maxCommVolt;
         }
+        public int MaxCommVoltage { get; set; }
     }
 }

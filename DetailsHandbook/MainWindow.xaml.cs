@@ -15,6 +15,7 @@ using System;
 
 namespace DetailsHandbook
 {
+    // При закрытии окна добавления детали снова вызывать Render. Как? А хуй знает, потом разберусь
     public partial class MainWindow : Window
     {
         private Dictionary<CustomButton, Detail> buttonObjectPairs = new();
@@ -64,7 +65,7 @@ namespace DetailsHandbook
                 }
             }
         }
-        private void Render()
+        public void Render()
         {
             using(var db = new DetailsDbContext())
             {

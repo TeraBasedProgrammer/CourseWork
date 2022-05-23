@@ -9,12 +9,15 @@ namespace DetailsLib
     public sealed class LogicMicrocircuit : Microcircuit
     {
         private const string detailType = "Логическая микросхема";
+
+        public LogicMicrocircuit(string model, string manuf, double price, string intchab, string supVolt, string caseType, string logicOrg)
+            : base(model, manuf, price, intchab, supVolt, caseType)
+        {
+            LogicOrganization = logicOrg;
+        }
+
         public string LogicOrganization { get; set; }
 
-        public LogicMicrocircuit() : base()
-        {
-            LogicOrganization = "Undefined";
-        }
         public override string ToString()
         {
             return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение питания: {SupplyVoltage}\nТип корпуса: {CaseType}\nЛогическая организация: {LogicOrganization}\n--------------------------------------------\n";
