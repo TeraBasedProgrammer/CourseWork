@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DetailsHandbook.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,7 +59,8 @@ namespace DetailsHandbook
                 {
                     if(model == detail.Model)
                     {
-                        MessageBox.Show("Такая деталь уже есть в базе данных, повторите попытку");
+                        CustomMessageBox cmb = new CustomMessageBox("Такая деталь уже есть в базе данных, повторите попытку");
+                        cmb.ShowDialog();
                         return false;
                     }
                 }
@@ -73,7 +75,8 @@ namespace DetailsHandbook
             bool temp = double.TryParse(inputString, out doubleNum);
             if (!temp)
             {
-                MessageBox.Show("Неправильный формат введённой строки. Введите целое число или дробное (через запятую)");
+                CustomMessageBox cmb = new CustomMessageBox("Неправильный формат введённой строки. Введите целое число или дробное (через запятую)");
+                cmb.ShowDialog();
                 return false;
             }
             return true;
@@ -86,17 +89,11 @@ namespace DetailsHandbook
             bool temp = int.TryParse(inputString, out doubleNum);
             if (!temp)
             {
-                MessageBox.Show("Неправильный формат введённой строки. Введите целое число");
+                CustomMessageBox cmb = new CustomMessageBox("Неправильный формат введённой строки. Введите целое число или дробное (через запятую)");
+                cmb.ShowDialog();
                 return false;
             }
             return true;
         }
-
-        // Метод проверки наличия числа в ведённой строке (для величин, хранящихся в переменной типа string)
-
-        //public static bool HasNumber(string inputString)
-        //{
-
-        //}
     }
 }

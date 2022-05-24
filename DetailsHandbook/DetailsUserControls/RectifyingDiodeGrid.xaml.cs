@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DetailsHandbook.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,12 +48,14 @@ namespace DetailsHandbook
             double detailRevCurr = 0;
             if (!CheckMethods.IsFilled(localTextBoxes))
             {
-                MessageBox.Show("Заполните все поля");
+                CustomMessageBox cmb = new CustomMessageBox("Заполните все поля!");
+                cmb.ShowDialog();
                 return;
             }
             else if (CheckMethods.HasManyCharacters(ref localTextBoxes))
             {
-                MessageBox.Show("Вы ввели недопустимое кол-во символов в поле ввода");
+                CustomMessageBox cmb = new CustomMessageBox("Вы ввели недопустимое кол-во символов в поле ввода");
+                cmb.ShowDialog();
                 return;
             }
             else
@@ -99,7 +102,8 @@ namespace DetailsHandbook
                     db.SaveChanges();
                 }
                 CheckMethods.TextBoxClear(localTextBoxes);
-                MessageBox.Show("Деталь успешно добавлена!");
+                CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
+                cmb.ShowDialog();
             }
         }
     }
