@@ -67,18 +67,18 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                //using (DetailsDbContext db = new DetailsDbContext())
-                //{
-                //    AnalogMicrocircuit am = new AnalogMicrocircuit(ModelTextBox.Text, 
-                //        ManufTextBox.Text, 
-                //        detailPrice, 
-                //        IntchabTextBox.Text, 
-                //        SuppVoltTextBox.Text, 
-                //        CaseTypeTextBox.Text, 
-                //        FuncPurpTextBox.Text);
-                //    db.AnalogMicrocircuits.Add(am);
-                //    db.SaveChanges();
-                //}
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    AnalogMicrocircuit am = new AnalogMicrocircuit(ModelTextBox.Text,
+                        ManufTextBox.Text,
+                        detailPrice,
+                        IntchabTextBox.Text,
+                        SuppVoltTextBox.Text,
+                        CaseTypeTextBox.Text,
+                        FuncPurpTextBox.Text);
+                    db.AnalogMicrocircuits.Add(am);
+                    db.SaveChanges();
+                }
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

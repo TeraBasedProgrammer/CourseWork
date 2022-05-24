@@ -86,18 +86,18 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                //using (DetailsDbContext db = new DetailsDbContext())
-                //{
-                //    HighFreqDiode hfd = new(ModelTextBox.Text,
-                //        ManufTextBox.Text,
-                //        detailPrice,
-                //        IntchabTextBox.Text,
-                //        detailCutoffCurr,
-                //        detailCutoffVolt,
-                //        detailCutoffFreq);
-                //    db.HighFreqDiodes.Add(hfd);
-                //    db.SaveChanges();
-                //}
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    HighFreqDiode hfd = new(ModelTextBox.Text,
+                        ManufTextBox.Text,
+                        detailPrice,
+                        IntchabTextBox.Text,
+                        detailCutoffCurr,
+                        detailCutoffVolt,
+                        detailCutoffFreq);
+                    db.HighFreqDiodes.Add(hfd);
+                    db.SaveChanges();
+                }
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

@@ -87,16 +87,16 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                //using (DetailsDbContext db = new DetailsDbContext())
-                //{
-                //    ConstantResistor cr = new(ModelTextBox.Text, 
-                //        ManufTextBox.Text, detailPrice, 
-                //        IntchabTextBox.Text, detailPower, 
-                //        detailNominal, detailAccess, 
-                //        TypeTextBox.Text);
-                //    db.ConstantResistor.Add(cr);
-                //    db.SaveChanges();
-                //}
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    ConstantResistor cr = new(ModelTextBox.Text,
+                        ManufTextBox.Text, detailPrice,
+                        IntchabTextBox.Text, detailPower,
+                        detailNominal, detailAccess,
+                        TypeTextBox.Text);
+                    db.ConstantResistor.Add(cr);
+                    db.SaveChanges();
+                }
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

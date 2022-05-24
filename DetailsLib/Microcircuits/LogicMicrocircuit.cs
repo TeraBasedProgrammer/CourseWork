@@ -25,7 +25,7 @@ namespace DetailsLib
 
         public override string ToString()
         {
-            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение питания: {SupplyVoltage}\nТип корпуса: {CaseType}\nЛогическая организация: {LogicOrganization}\n--------------------------------------------\n";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНапряжение питания: {SupplyVoltage}\nТип корпуса: {CaseType}\nЛогическая организация: {LogicOrganization}\n";
         }
 
         public override string GetShortDetailType() => "ЛМ";

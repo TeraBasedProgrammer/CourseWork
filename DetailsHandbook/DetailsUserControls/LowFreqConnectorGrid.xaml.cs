@@ -73,16 +73,16 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                //using (DetailsDbContext db = new DetailsDbContext())
-                //{
-                //    LowFreqConnector lfc = new(ModelTextBox.Text,
-                //        ManufTextBox.Text,
-                //        detailPrice, IntchabTextBox.Text,
-                //        detailMaxCommVolt,
-                //        ConnectorTypeTextBox.Text);
-                //    db.LowFreqConnectors.Add(lfc);
-                //    db.SaveChanges();
-                //}
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    LowFreqConnector lfc = new(ModelTextBox.Text,
+                        ManufTextBox.Text,
+                        detailPrice, IntchabTextBox.Text,
+                        detailMaxCommVolt,
+                        ConnectorTypeTextBox.Text);
+                    db.LowFreqConnectors.Add(lfc);
+                    db.SaveChanges();
+                }
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

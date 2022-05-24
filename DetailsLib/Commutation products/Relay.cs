@@ -26,7 +26,7 @@ namespace DetailsLib
          
         public override string ToString()
         {
-            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nНапряжение обмотки: {WindingWorkVoltage}В\n--------------------------------------------\n";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nКоммутируемое напряжение: {MaxCommVoltage}В\nНапряжение обмотки: {WindingWorkVoltage}В\n";
         }
 
         public override string GetShortDetailType() => "Реле";

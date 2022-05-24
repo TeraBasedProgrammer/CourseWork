@@ -1,0 +1,69 @@
+﻿<Window x:Class="DetailsHandbook.Windows.CustomDetailTextWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DetailsHandbook"
+        mc:Ignorable="d"
+        Title="CustomDetailTextWindow" 
+        Height="Auto" Width="300"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        Icon="..\Images\logo4.2.png">
+    <Border Background="#000342" x:Name="MainBorder">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                        Height="22"
+                        FlowDirection="RightToLeft" 
+                        Background="#FF151192"
+                        MouseDown="WindowPanel_MouseDown">
+                <Button Width="20" Content="⨉" FontSize="13" 
+                        x:Name="WindowCloseButton"
+                        Foreground="White" 
+                        BorderThickness="0"
+                        Click="WindowCloseButton_Click"
+                        Style="{StaticResource CloseButtonStyle}"/>
+                <Button Width="20" Content="🗕" FontSize="13" 
+                        Foreground="White" 
+                        BorderThickness="0"
+                        x:Name="WindowHideButton"
+                        Click="WindowHideButton_Click"
+                        Style="{StaticResource HideButtonStyle}"/>
+            </StackPanel>
+            <TextBlock Padding="0 10 0 0"
+                     Margin="10"
+                     x:Name="MessageBoxText"
+                     Foreground="White"
+                     FontSize="13"
+                     HorizontalAlignment="Center"
+                     Text=""/>
+            <StackPanel Orientation="Horizontal"
+                        Height ="40"
+                        FlowDirection="RightToLeft" 
+                        Background="#FF151192">
+                <local:CustomButton Style="{StaticResource GrayButtonStyle}"
+                                    Width="70"
+                                    Height="30"
+                                    Margin="10 0 0 0"
+                                    Click="DeleteButton_Click">
+                    <local:CustomButton.Content>
+                        <TextBlock Style="{StaticResource DetailButtonText}"
+                                   Text="Удалить"/>
+                    </local:CustomButton.Content>
+                </local:CustomButton>
+                <local:CustomButton Style="{StaticResource GrayButtonStyle}"
+                                    Width="70"
+                                    Height="30"
+                                    Margin="10 0 0 0"
+                                    Click="OkButton_Click">
+                    <local:CustomButton.Content>
+                        <TextBlock Style="{StaticResource DetailButtonText}"
+                                   Text="OK"/>
+                    </local:CustomButton.Content>
+                </local:CustomButton>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>

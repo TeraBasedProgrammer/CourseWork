@@ -86,18 +86,18 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                //using (DetailsDbContext db = new DetailsDbContext())
-                //{
-                //    Inductance ind = new(ModelTextBox.Text,
-                //        ManufTextBox.Text,
-                //        detailPrice,
-                //        IntchabTextBox.Text,
-                //        detailNominal,
-                //        detailWorkCurr,
-                //        detailAccess);
-                //    db.Inductances.Add(ind);
-                //    db.SaveChanges();
-                //}
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    Inductance ind = new(ModelTextBox.Text,
+                        ManufTextBox.Text,
+                        detailPrice,
+                        IntchabTextBox.Text,
+                        detailNominal,
+                        detailWorkCurr,
+                        detailAccess);
+                    db.Inductances.Add(ind);
+                    db.SaveChanges();
+                }
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

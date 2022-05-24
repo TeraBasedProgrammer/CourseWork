@@ -79,17 +79,17 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                //using (DetailsDbContext db = new DetailsDbContext())
-                //{
-                //    Thyristor tr = new(ModelTextBox.Text,
-                //        ManufTextBox.Text,
-                //        detailPrice,
-                //        IntchabTextBox.Text,
-                //        detailVolt,
-                //        detailCurr);
-                //    db.Thyristors.Add(tr);
-                //    db.SaveChanges();
-                //}
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    Thyristor tr = new(ModelTextBox.Text,
+                        ManufTextBox.Text,
+                        detailPrice,
+                        IntchabTextBox.Text,
+                        detailVolt,
+                        detailCurr);
+                    db.Thyristors.Add(tr);
+                    db.SaveChanges();
+                }
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

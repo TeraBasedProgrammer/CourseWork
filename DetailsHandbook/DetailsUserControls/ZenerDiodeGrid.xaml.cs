@@ -79,17 +79,17 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                //using (DetailsDbContext db = new DetailsDbContext())
-                //{
-                //    ZenerDiode zd = new(ModelTextBox.Text,
-                //        ManufTextBox.Text,
-                //        detailPrice,
-                //        IntchabTextBox.Text,
-                //        detailStabVolt,
-                //        detailStabCurr);
-                //    db.ZenerDiodes.Add(zd);
-                //    db.SaveChanges();
-                //}
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    ZenerDiode zd = new(ModelTextBox.Text,
+                        ManufTextBox.Text,
+                        detailPrice,
+                        IntchabTextBox.Text,
+                        detailStabVolt,
+                        detailStabCurr);
+                    db.ZenerDiodes.Add(zd);
+                    db.SaveChanges();
+                }
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

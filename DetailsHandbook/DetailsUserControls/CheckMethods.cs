@@ -29,7 +29,7 @@ namespace DetailsHandbook
             int cyclesCounter = 0;
             for (int i = 0; i < localTextBoxes.Count; i++)
             {
-                if (localTextBoxes[i].Text.Length > 30)
+                if (localTextBoxes[i].Text.Length > 25)
                 {
                     localTextBoxes[i].Text = "";
                     ++cyclesCounter;

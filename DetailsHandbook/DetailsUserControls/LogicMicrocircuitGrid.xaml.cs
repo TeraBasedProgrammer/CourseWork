@@ -68,18 +68,18 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                //using (DetailsDbContext db = new DetailsDbContext())
-                //{
-                //    LogicMicrocircuit lm = new LogicMicrocircuit(ModelTextBox.Text,
-                //        ManufTextBox.Text,
-                //        detailPrice,
-                //        IntchabTextBox.Text,
-                //        SupVoltTextBox.Text,
-                //        CaseTypeTextBox.Text,
-                //        LogicOrgTextBox.Text);
-                //    db.LogicMicrocircuits.Add(lm);
-                //    db.SaveChanges();
-                //}
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    LogicMicrocircuit lm = new LogicMicrocircuit(ModelTextBox.Text,
+                        ManufTextBox.Text,
+                        detailPrice,
+                        IntchabTextBox.Text,
+                        SupVoltTextBox.Text,
+                        CaseTypeTextBox.Text,
+                        LogicOrgTextBox.Text);
+                    db.LogicMicrocircuits.Add(lm);
+                    db.SaveChanges();
+                }
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

@@ -68,18 +68,18 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                //using (DetailsDbContext db = new DetailsDbContext())
-                //{
-                //    ComputerSystem am = new ComputerSystem(ModelTextBox.Text,
-                //        ManufTextBox.Text,
-                //        detailPrice,
-                //        IntchabTextBox.Text,
-                //        SuppVoltTextBox.Text,
-                //        CaseTypeTextBox.Text,
-                //        FuncPurpTextBox.Text);
-                //    db.ComputerSystems.Add(am);
-                //    db.SaveChanges();
-                //}
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    ComputerSystem am = new ComputerSystem(ModelTextBox.Text,
+                        ManufTextBox.Text,
+                        detailPrice,
+                        IntchabTextBox.Text,
+                        SuppVoltTextBox.Text,
+                        CaseTypeTextBox.Text,
+                        FuncPurpTextBox.Text);
+                    db.ComputerSystems.Add(am);
+                    db.SaveChanges();
+                }
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

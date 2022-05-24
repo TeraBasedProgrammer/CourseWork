@@ -73,16 +73,16 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                //using (DetailsDbContext db = new DetailsDbContext())
-                //{
-                //    Switcher sw = new(ModelTextBox.Text,
-                //        ManufTextBox.Text,
-                //        detailPrice, IntchabTextBox.Text,
-                //        detailMaxCommVolt,
-                //        SwitchTypeTextBox.Text);
-                //    db.Switchers.Add(sw);
-                //    db.SaveChanges();
-                //}
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    Switcher sw = new(ModelTextBox.Text,
+                        ManufTextBox.Text,
+                        detailPrice, IntchabTextBox.Text,
+                        detailMaxCommVolt,
+                        SwitchTypeTextBox.Text);
+                    db.Switchers.Add(sw);
+                    db.SaveChanges();
+                }
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

@@ -1,0 +1,77 @@
+﻿<Window x:Class="DetailsHandbook.Windows.DetailDeletionConf"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DetailsHandbook"
+        mc:Ignorable="d"
+        Title="DetailDeletionConf" 
+        Width="250"
+        SizeToContent="Height"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <Border Background="#000342" x:Name="MainBorder">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                        Height="22"
+                        FlowDirection="RightToLeft" 
+                        Background="#FF151192"
+                        MouseDown="WindowPanel_MouseDown">
+                <Button Width="20" Content="⨉" FontSize="13" 
+                        x:Name="WindowCloseButton"
+                        Foreground="White" 
+                        BorderThickness="0"
+                        Click="WindowCloseButton_Click"
+                        Style="{StaticResource CloseButtonStyle}"/>
+                <Button Width="20" Content="🗕" FontSize="13" 
+                        Foreground="White" 
+                        BorderThickness="0"
+                        x:Name="WindowHideButton"
+                        Click="WindowHideButton_Click"
+                        Style="{StaticResource HideButtonStyle}"/>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <TextBlock 
+                     Foreground="White"
+                     FontSize="13"
+                     MaxWidth="195"
+                     HorizontalAlignment="Center"
+                     Text="Вы уверены, что хотите удалить"/>
+                <TextBlock 
+                     Foreground="White"
+                     FontSize="13"
+                     MaxWidth="195"
+                     HorizontalAlignment="Center"
+                     Text="эту деталь из базы данных?"/>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Height ="40"
+                        FlowDirection="RightToLeft" 
+                        Background="#FF151192">
+                <local:CustomButton Style="{StaticResource GrayButtonStyle}"
+                                    Width="70"
+                                    Height="30"
+                                    Margin="10 0 0 0"
+                                    Click="CancelButton_Click">
+                    <local:CustomButton.Content>
+                        <TextBlock Style="{StaticResource DetailButtonText}"
+                                   Text="Отменить"/>
+                    </local:CustomButton.Content>
+                </local:CustomButton>
+                <local:CustomButton Style="{StaticResource GrayButtonStyle}"
+                                    Width="70"
+                                    Height="30"
+                                    Margin="10 0 0 0"
+                                    Click="YesButton_Click">
+                    <local:CustomButton.Content>
+                        <TextBlock Style="{StaticResource DetailButtonText}"
+                                   Text="Да"/>
+                    </local:CustomButton.Content>
+                </local:CustomButton>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>

@@ -30,7 +30,7 @@ namespace DetailsLib
           
         public override string ToString()
         {
-            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНоминал: {Nominal}нФ\nРабочее напряжение: {WorkingVoltage}В\nДопуск: {Access}%\nТКЕ: {Tcc}\n--------------------------------------------\n";
+            return $"Тип детали: {detailType}\n\nМодель: {Model}\nПроизводитель: {Manufacturer}\nЦена: {Price}$\nВзаимозаменяемость: {Interchangeability}\nНоминал: {Nominal}нФ\nРабочее напряжение: {WorkingVoltage}В\nДопуск: {Access}%\nТКЕ: {Tcc}\n";
         }
 
         public override string GetShortDetailType() => "КК";

@@ -79,16 +79,16 @@ namespace DetailsHandbook
 
             if (allInputIsCorrect.Sum() == allInputIsCorrect.Length)
             {
-                //using (DetailsDbContext db = new DetailsDbContext())
-                //{
-                //    HighFreqConnector hfc = new(ModelTextBox.Text,
-                //        ManufTextBox.Text,
-                //        detailPrice, IntchabTextBox.Text,
-                //        detailMaxCommVolt,
-                //        detailWaveRes);
-                //    db.HighFreqConnector.Add(hfc);
-                //    db.SaveChanges();
-                //}
+                using (DetailsDbContext db = new DetailsDbContext())
+                {
+                    HighFreqConnector hfc = new(ModelTextBox.Text,
+                        ManufTextBox.Text,
+                        detailPrice, IntchabTextBox.Text,
+                        detailMaxCommVolt,
+                        detailWaveRes);
+                    db.HighFreqConnector.Add(hfc);
+                    db.SaveChanges();
+                }
                 CheckMethods.TextBoxClear(localTextBoxes);
                 MessageBox.Show("Деталь успешно добавлена!");
             }

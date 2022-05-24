@@ -84,6 +84,14 @@ namespace DetailsHandbook
                 }
             }
         }
+
+        public void ClearPage()
+        {
+            foreach (WrapPanel wp in filterPanelPairs.Values)
+            {
+                wp.Children.RemoveRange(1, wp.Children.Count);
+            }
+        }
         private void ButtonRender(WrapPanel wp, Detail detail)
         {
             var buttonContent = new StackPanel();
@@ -122,7 +130,15 @@ namespace DetailsHandbook
         }
         private void DetailButtonClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(buttonObjectPairs.GetValueOrDefault((CustomButton)sender).ToString());
+            Detail tempObject = buttonObjectPairs.GetValueOrDefault((CustomButton)sender);
+            var messageBox = new CustomDetailTextWindow(tempObject.ToString(), tempObject);
+            messageBox.Owner = this;
+            messageBox.ShowDialog();
+            if (messageBox.DialogResult == true)
+            {
+                ClearPage();
+                Render();
+            }
         }
 
         private void AddDetailButton_Click(object sender, RoutedEventArgs e)
@@ -130,6 +146,11 @@ namespace DetailsHandbook
             var dap = new DetailsAddPanel();
             dap.Owner = this;
             dap.ShowDialog();
+            if (dap.DialogResult == true)
+            {
+                ClearPage();
+                Render();
+            }
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)

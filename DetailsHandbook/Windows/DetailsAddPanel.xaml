@@ -12,7 +12,7 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         Icon="..\Images\logo4.2.png">
-    <Border Background="#181735">
+    <Border Background="#000342">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="22.22"/>
