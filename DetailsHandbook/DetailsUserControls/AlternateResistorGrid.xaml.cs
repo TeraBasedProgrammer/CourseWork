@@ -16,19 +16,24 @@ using System.Windows.Shapes;
 
 namespace DetailsHandbook
 {
-    /// <summary>
-    /// Логика взаимодействия для AlternateResistorGrid.xaml
-    /// </summary>
-    public partial class AlternateResistorGrid : UserControl
+    public partial class AlternateResistorGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
-        
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        // private List<Detail> searchResultCollection = new();
+
         public AlternateResistorGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
 
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
         private void AddTextBoxes()
         {
             localTextBoxes.Add(ModelTextBox);
@@ -108,6 +113,30 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            DetailsSearchPanel.SearchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if(det is AlternateResistor ar)
+                    {
+                        if (ar.Model.IndexOf(ModelTextBox.Text) > -1
+                            && ar.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && ar.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && ar.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && ar.Power.ToString().IndexOf(PowerTextBox.Text) > -1
+                            && ar.Nominal.ToString().IndexOf(NominalTextBox.Text) > -1
+                            && ar.Access.ToString().IndexOf(AccessTextBox.Text) > -1
+                            && ar.SpinType.IndexOf(SpinTypeTextBox.Text) > -1)
+                            DetailsSearchPanel.SearchResultCollection.Add(ar);
+                    }
+                }
+            }
+
+            GetSearchResult(DetailsSearchPanel.SearchResultCollection);
         }
     }
 }

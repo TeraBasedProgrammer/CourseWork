@@ -19,14 +19,24 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для SwitcherGrid.xaml
     /// </summary>
-    public partial class SwitcherGrid : UserControl
+    public partial class SwitcherGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
         public SwitcherGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
+
 
         private void AddTextBoxes()
         {
@@ -90,6 +100,29 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is Switcher switcher)
+                    {
+                        if (switcher.Model.IndexOf(ModelTextBox.Text) > -1
+                            && switcher.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && switcher.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && switcher.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && switcher.MaxCommVoltage.ToString().IndexOf(MaxCommVoltTextBox.Text) > -1
+                            && switcher.SwitchType.IndexOf(SwitchTypeTextBox.Text) > -1)
+                            searchResultCollection.Add(switcher);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

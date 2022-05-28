@@ -19,14 +19,23 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для HighFreqConnectorGrid.xaml
     /// </summary>
-    public partial class HighFreqConnectorGrid : UserControl
+    public partial class HighFreqConnectorGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
         public HighFreqConnectorGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
 
         private void AddTextBoxes()
         {
@@ -96,6 +105,29 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is HighFreqConnector hfc)
+                    {
+                        if (hfc.Model.IndexOf(ModelTextBox.Text) > -1
+                            && hfc.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && hfc.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && hfc.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && hfc.MaxCommVoltage.ToString().IndexOf(MaxCommVoltTextBox.Text) > -1
+                            && hfc.WaveResistance.ToString().IndexOf(WaveResTextBox.Text) > -1)
+                            searchResultCollection.Add(hfc);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

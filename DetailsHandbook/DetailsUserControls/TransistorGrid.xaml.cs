@@ -19,14 +19,24 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для TransistorGrid.xaml
     /// </summary>
-    public partial class TransistorGrid : UserControl
+    public partial class TransistorGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
         public TransistorGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
+
 
         private void AddTextBoxes()
         {
@@ -95,6 +105,31 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is Transistor tr)
+                    {
+                        if (tr.Model.IndexOf(ModelTextBox.Text) > -1
+                            && tr.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && tr.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && tr.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && tr.Type.IndexOf(TypeTextBox.Text) > -1
+                            && tr.Power.ToString().IndexOf(PowerTextBox.Text) > -1
+                            && tr.CutoffFreq.ToString().IndexOf(CutoffFreqTextBox.Text) > -1
+                            && tr.HighOrLowFreq.IndexOf(HighOrLowFreqTextBox.Text) > -1)
+                            searchResultCollection.Add(tr);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

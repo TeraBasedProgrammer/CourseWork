@@ -19,14 +19,24 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для CeramicCapacitorGrid.xaml
     /// </summary>
-    public partial class CeramicCapacitorGrid : UserControl
+    public partial class CeramicCapacitorGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
+
         public CeramicCapacitorGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
 
         private void AddTextBoxes()
         {
@@ -100,6 +110,31 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is CeramicCapacitor cc)
+                    {
+                        if (cc.Model.IndexOf(ModelTextBox.Text) > -1
+                            && cc.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && cc.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && cc.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && cc.Nominal.ToString().IndexOf(NominalTextBox.Text) > -1
+                            && cc.WorkingVoltage.ToString().IndexOf(WorkVoltageTextBox.Text) > -1
+                            && cc.Access.ToString().IndexOf(AccessTextBox.Text) > -1
+                            && cc.Tcc.IndexOf(TccTextBox.Text) > -1)
+                            searchResultCollection.Add(cc);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

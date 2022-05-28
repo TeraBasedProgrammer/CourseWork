@@ -19,14 +19,23 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для LogicMicrocircuitGrid.xaml
     /// </summary>
-    public partial class LogicMicrocircuitGrid : UserControl
+    public partial class LogicMicrocircuitGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
         public LogicMicrocircuitGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
 
         private void AddTextBoxes()
         {
@@ -87,6 +96,30 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is LogicMicrocircuit lm)
+                    {
+                        if (lm.Model.IndexOf(ModelTextBox.Text) > -1
+                            && lm.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && lm.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && lm.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && lm.SupplyVoltage.IndexOf(SupVoltTextBox.Text) > -1
+                            && lm.CaseType.ToString().IndexOf(CaseTypeTextBox.Text) > -1
+                            && lm.LogicOrganization.IndexOf(LogicOrgTextBox.Text) > -1)
+                            searchResultCollection.Add(lm);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

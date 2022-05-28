@@ -19,14 +19,23 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для LightDiodeGrid.xaml
     /// </summary>
-    public partial class LightDiodeGrid : UserControl
+    public partial class LightDiodeGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
         public LightDiodeGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
 
         private void AddTextBoxes()
         {
@@ -105,6 +114,30 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is LightDiode ld)
+                    {
+                        if (ld.Model.IndexOf(ModelTextBox.Text) > -1
+                            && ld.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && ld.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && ld.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && ld.CutoffCurrent.ToString().IndexOf(CutoffCurrTextBox.Text) > -1
+                            && ld.CutoffVoltage.ToString().IndexOf(CutoffVoltTextBox.Text) > -1
+                            && ld.LightPower.ToString().IndexOf(LightPowTextBox.Text) > -1)
+                            searchResultCollection.Add(ld);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

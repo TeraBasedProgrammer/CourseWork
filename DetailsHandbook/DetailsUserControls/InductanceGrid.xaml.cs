@@ -19,14 +19,23 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для InductanceGrid.xaml
     /// </summary>
-    public partial class InductanceGrid : UserControl
+    public partial class InductanceGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
         public InductanceGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
 
         private void AddTextBoxes()
         {
@@ -105,6 +114,11 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            GetSearchResult(searchResultCollection);
         }
     }
 }

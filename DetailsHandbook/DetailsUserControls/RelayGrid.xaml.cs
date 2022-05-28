@@ -19,14 +19,24 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для RelayGrid.xaml
     /// </summary>
-    public partial class RelayGrid : UserControl
+    public partial class RelayGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
         public RelayGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
+
 
         private void AddTextBoxes()
         {
@@ -96,6 +106,29 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is Relay rl)
+                    {
+                        if (rl.Model.IndexOf(ModelTextBox.Text) > -1
+                            && rl.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && rl.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && rl.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && rl.MaxCommVoltage.ToString().IndexOf(MaxCommVoltTextBox.Text) > -1
+                            && rl.WindingWorkVoltage.ToString().IndexOf(WindingVoltTextBox.Text) > -1)
+                            searchResultCollection.Add(rl);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

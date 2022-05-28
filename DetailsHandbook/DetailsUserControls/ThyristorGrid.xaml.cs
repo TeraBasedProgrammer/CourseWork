@@ -19,14 +19,24 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для ThyristorGrid.xaml
     /// </summary>
-    public partial class ThyristorGrid : UserControl
+    public partial class ThyristorGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
         public ThyristorGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
+
 
         private void AddTextBoxes()
         {
@@ -97,6 +107,29 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is Thyristor tr)
+                    {
+                        if (tr.Model.IndexOf(ModelTextBox.Text) > -1
+                            && tr.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && tr.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && tr.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && tr.DcVoltageInClosedCase.ToString().IndexOf(VoltTextBox.Text) > -1
+                            && tr.DCurrentInOpenCase.ToString().IndexOf(CurrTextBox.Text) > -1)
+                            searchResultCollection.Add(tr);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

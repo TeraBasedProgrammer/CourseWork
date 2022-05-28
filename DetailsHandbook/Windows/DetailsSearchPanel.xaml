@@ -1,0 +1,326 @@
+﻿<Window x:Class="DetailsHandbook.Windows.DetailsSearchPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DetailsHandbook"
+        mc:Ignorable="d"
+        Title="DetailsSearchPanel" 
+        Height="580" Width="725"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        Icon="..\Images\logo4.2.png">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/StylesDictionary.xaml"/>
+                <ResourceDictionary Source="/Styles/CustomScrollbarStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border Background="#000342">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="22"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0"
+                        FlowDirection="RightToLeft" 
+                        Background="#FF151192"
+                        MouseDown="WindowPanel_MouseDown">
+                <Button Width="20" Content="⨉" FontSize="13" 
+                        x:Name="WindowCloseButton"
+                        Foreground="White" 
+                        BorderThickness="0"
+                        Click="WindowCloseButton_Click"
+                        Style="{StaticResource CloseButtonStyle}"/>
+                <Button Width="20" Content="🗕" FontSize="13" 
+                        Foreground="White" 
+                        BorderThickness="0"
+                        x:Name="WindowHideButton"
+                        Click="WindowHideButton_Click"
+                        Style="{StaticResource HideButtonStyle}"/>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <local:CustomButton x:Name="DetailsCheckBox"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Style="{StaticResource GrayButtonStyle}"
+                    Width="55"
+                    Height="40"
+                    HorizontalAlignment="Left"
+                    Margin="10 0 0 0"
+                    Click="DetailsCheckBox_Click">
+                        <Button.Content>
+                            <Image Source="..\Images\logo2.1.png"
+                           Width="30"
+                           Height="35"/>
+                        </Button.Content>
+                    </local:CustomButton>
+                    <StackPanel Width="250" 
+                            HorizontalAlignment="Center"
+                            Grid.Row="0">
+                        <TextBlock Text="Найти деталь: "
+                               FontSize="20"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               Margin="0 10 0 0">
+
+                        </TextBlock>
+                        <TextBlock Text="Переменный резистор"
+                               x:Name="TitleText"
+                               FontSize="20"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               Margin="0 0 0 0">
+
+                        </TextBlock>
+                    </StackPanel>
+                    <Grid x:Name="DetailsBar"
+                  Grid.Row="3"
+                  Panel.ZIndex="999"
+                  Width="230"
+                  Height="360"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  Margin="8 -13 0 0"
+                  Visibility="Hidden">
+                        <Polygon Fill="#353340"
+                         Points="0,8,
+                         0,360,
+                         230,360,
+                         230,8,
+                         37,8,
+                         29,0,
+                         21,8"/>
+                        <ScrollViewer Margin="0 10 0 0">
+                            <StackPanel Height="AUTO" Margin="10 -10 0 0">
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center" 
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="AlternateResistorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock  Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="• Переменный резистор" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="AnalogMicrocircuitButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Аналоговая микросхема"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="CeramicCapacitorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Керам. конденсатор"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ComputerSystemButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="СВС"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ConstantResistorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Постоянный резистор"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ElectrolyticCapacitorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Электролит. конд."/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="HighFreqConnectorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="ВЧ разъём"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="HighFreqDiodeButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="ВЧ диод"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="InductanceButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Индуктивность"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="LightDiodeButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Светодиод"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="LogicMicrocircuitButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Логическая микросхема"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="LowFreqConnectorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="НЧ разъём"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="MembraneCapacitorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Плёночный конденсатор"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="RectifyingDiodeButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Выпрямительный диод"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="RelayButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Реле"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="SwitcherButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Тумблер"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ThyristorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Тиристор"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="TransistorButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Транзистор"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                                <local:CustomButton Height="35" Margin="0 10 0 0" 
+                                                HorizontalContentAlignment="Center"
+                                        Style="{StaticResource FilterCheckBoxButton}"
+                                        x:Name="ZenerDiodeButton"
+                                        Click="DetailCheckBoxButton_Click">
+                                    <Button.Content>
+                                        <TextBlock Style="{StaticResource DetailsCheckBoxButtonTextStyle}" Text="Стабилитрон"/>
+                                    </Button.Content>
+                                </local:CustomButton>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                    <StackPanel Grid.Row="1" x:Name="UserControlsContainer">
+                        <local:AlternateResistorGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Visible" x:Name="AlternateResistorGrid"/>
+                        <local:AnalogMicrocircuitGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="AnalogMicrocircuitGrid"/>
+                        <local:CeramicCapacitorGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="CeramicCapacitorGrid"/>
+                        <local:ComputerSystemGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="ComputerSystemGrid"/>
+                        <local:СonstantResistorGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="ConstantResistorGrid"/>
+                        <local:ElectrolyticCapacitorGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="ElectrolyticCapacitorGrid"/>
+                        <local:HighFreqConnectorGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="HighFreqConnectorGrid"/>
+                        <local:HighFreqDiodeGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible"  Visibility="Collapsed" x:Name="HighFreqDiodeGrid"/>
+                        <local:InductanceGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="InductanceGrid"/>
+                        <local:LightDiodeGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="LightDiodeGrid"/>
+                        <local:LogicMicrocircuitGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="LogicMicrocircuitGrid"/>
+                        <local:LowFreqConnectorGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="LowFreqConnectorGrid"/>
+                        <local:MembraneCapacitorGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="MembraneCapacitorGrid"/>
+                        <local:RectifyingDiodeGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="RectifyingDiodeGrid"/>
+                        <local:RelayGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="RelayGrid"/>
+                        <local:SwitcherGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="SwitcherGrid"/>
+                        <local:ThyristorGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="ThyristorGrid"/>
+                        <local:TransistorGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="TransistorGrid"/>
+                        <local:ZenerDiodeGrid AddButtonVisibility="Collapsed" SearchButtonVisibility="Visible" Visibility="Collapsed" x:Name="ZenerDiodeGrid"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Width="180"
+                               Foreground="White"
+                               FontSize="20"
+                               Text="Результаты поиска: "
+                               Padding="0 10 0 0"/>
+                    <ScrollViewer Grid.Row="1" Margin="0 -19 0 0">
+                        <WrapPanel x:Name="SearchResultWrapPanel" Grid.Row="1">
+
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

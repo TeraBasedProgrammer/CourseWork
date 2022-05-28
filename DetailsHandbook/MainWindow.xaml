@@ -1,4 +1,5 @@
 ﻿<Window x:Class="DetailsHandbook.MainWindow"
+        x:Name="MainWindowName"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -62,7 +63,7 @@
                        HorizontalAlignment="Left"
                        Margin="26 0 0 0"/>
 
-                <TextBox Grid.Column="1"
+                <!--<TextBox Grid.Column="1"
                          Height="30"
                          Width="Auto"
                          Margin="30 0 0 0"
@@ -75,7 +76,7 @@
                     <Button.Content>
                         <TextBlock Text="🔎" FontSize="12" Foreground="White"/>
                     </Button.Content>
-                </local:CustomButton>
+                </local:CustomButton>-->
                 <local:CustomButton Style="{StaticResource DefaultButton}" 
                                     Grid.Column="5" 
                                     Width="110" 
@@ -87,8 +88,36 @@
                     <Button.Content>
                         <TextBlock Text="Добавить деталь"
                                    FontSize="13"
+                                   Foreground="White"/>
+                    </Button.Content>
+                </local:CustomButton>
+                <!--<local:CustomButton Style="{StaticResource DefaultButton}" 
+                                    Grid.Column="4" 
+                                    Width="110" 
+                                    Height="40" 
+                                    Background="#535CF5" 
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Center" 
+                                    Click="AddDetailButton_Click">
+                    <Button.Content>
+                        <TextBlock Text="Поиск"
+                                   FontSize="13"
                                    Foreground="White"
                                    FontWeight="DemiBold"/>
+                    </Button.Content>
+                </local:CustomButton>-->
+                <local:CustomButton Grid.Column="4" 
+                                    HorizontalAlignment="Right"
+                                    Background="#535CF5"
+                        Height="40"
+                        Width="110"
+                        Style="{StaticResource DefaultButton}"
+                        Click="SearchButton_Click">
+                    <Button.Content>
+                        <TextBlock 
+                            Text="Поиск детали" 
+                            FontSize="14" 
+                            Foreground="White"/>
                     </Button.Content>
                 </local:CustomButton>
             </Grid>

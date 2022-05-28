@@ -19,14 +19,23 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для ElectrolyticCapacitorGrid.xaml
     /// </summary>
-    public partial class ElectrolyticCapacitorGrid : UserControl
+    public partial class ElectrolyticCapacitorGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
         public ElectrolyticCapacitorGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
 
         private void AddTextBoxes()
         {
@@ -100,6 +109,31 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is ElectrolyticCapacitor ec)
+                    {
+                        if (ec.Model.IndexOf(ModelTextBox.Text) > -1
+                            && ec.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && ec.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && ec.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && ec.Nominal.ToString().IndexOf(NominalTextBox.Text) > -1
+                            && ec.WorkingVoltage.ToString().IndexOf(WorkVoltageTextBox.Text) > -1
+                            && ec.Access.ToString().IndexOf(AccessTextBox.Text) > -1
+                            && ec.PlateType.IndexOf(PlateTypeTextBox.Text) > -1)
+                            searchResultCollection.Add(ec);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

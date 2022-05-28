@@ -19,14 +19,24 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для RectifyingDiodeGrid.xaml
     /// </summary>
-    public partial class RectifyingDiodeGrid : UserControl
+    public partial class RectifyingDiodeGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
         public RectifyingDiodeGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
+
 
         private void AddTextBoxes()
         {
@@ -105,6 +115,30 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is RectifyingDiode rd)
+                    {
+                        if (rd.Model.IndexOf(ModelTextBox.Text) > -1
+                            && rd.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && rd.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && rd.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && rd.CutoffCurrent.ToString().IndexOf(CutoffCurTextBox.Text) > -1
+                            && rd.CutoffVoltage.ToString().IndexOf(CutoffVoltTextBox.Text) > -1
+                            && rd.ReverseCurrent.ToString().IndexOf(RevCurrTextBox.Text) > -1)
+                            searchResultCollection.Add(rd);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

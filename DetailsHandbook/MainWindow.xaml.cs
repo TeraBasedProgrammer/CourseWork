@@ -15,12 +15,13 @@ using System;
 
 namespace DetailsHandbook
 {
-    // При закрытии окна добавления детали снова вызывать Render. Как? А хуй знает, потом ро
     public partial class MainWindow : Window
     {
+
+        public IDelegate.ReRenderHandler ReRender = null;
         private Dictionary<CustomButton, Detail> buttonObjectPairs = new();
         private Dictionary<CustomButton, WrapPanel> filterPanelPairs = new();
-        
+     
         public MainWindow()
         {
             InitializeComponent();
@@ -128,17 +129,25 @@ namespace DetailsHandbook
         {
             Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
+
+        private void IsClosed(Window wd)
+        {
+            if (wd.DialogResult == true)
+            {
+                ClearPage();
+                Render();
+            }
+        }
+
         private void DetailButtonClick(object sender, RoutedEventArgs e)
         {
             Detail tempObject = buttonObjectPairs.GetValueOrDefault((CustomButton)sender);
             var messageBox = new CustomDetailTextWindow(tempObject.ToString(), tempObject);
             messageBox.Owner = this;
-            messageBox.ShowDialog();
+            messageBox.ShowDialog();           
+            IsClosed(messageBox);
             if (messageBox.DialogResult == true)
-            {
-                ClearPage();
-                Render();
-            }
+                ReRender(DetailsSearchPanel.SearchResultCollection);
         }
 
         private void AddDetailButton_Click(object sender, RoutedEventArgs e)
@@ -146,11 +155,16 @@ namespace DetailsHandbook
             var dap = new DetailsAddPanel();
             dap.Owner = this;
             dap.ShowDialog();
-            if (dap.DialogResult == true)
-            {
-                ClearPage();
-                Render();
-            }
+            IsClosed(dap);
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dsp = new DetailsSearchPanel();
+            dsp.GetButtonRender += ButtonRender;
+            dsp.Owner = this;
+            dsp.ShowDialog();
+            IsClosed(dsp);
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)

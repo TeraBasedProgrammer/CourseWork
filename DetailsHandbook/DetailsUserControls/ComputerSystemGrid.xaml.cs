@@ -19,14 +19,24 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для ComputerSystemGrid.xaml
     /// </summary>
-    public partial class ComputerSystemGrid : UserControl
+    public partial class ComputerSystemGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
+
         public ComputerSystemGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
 
         private void AddTextBoxes()
         {
@@ -87,6 +97,30 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is ComputerSystem cs)
+                    {
+                        if (cs.Model.IndexOf(ModelTextBox.Text) > -1
+                            && cs.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && cs.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && cs.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && cs.SupplyVoltage.IndexOf(SuppVoltTextBox.Text) > -1
+                            && cs.CaseType.ToString().IndexOf(CaseTypeTextBox.Text) > -1
+                            && cs.FunctionalPurpose.IndexOf(FuncPurpTextBox.Text) > -1)
+                            searchResultCollection.Add(cs);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

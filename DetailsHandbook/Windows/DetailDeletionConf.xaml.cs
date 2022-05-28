@@ -50,8 +50,6 @@ namespace DetailsHandbook.Windows
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
-            // У меня не было другого выбора, извините...
-
             using(DetailsDbContext db = new DetailsDbContext())
             {
                 db.Remove(currObj);

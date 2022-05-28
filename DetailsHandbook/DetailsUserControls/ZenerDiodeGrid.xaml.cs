@@ -1,6 +1,7 @@
 ﻿using DetailsHandbook.Windows;
 using System;
 using System.Collections.Generic;
+using System.DirectoryServices;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +20,24 @@ namespace DetailsHandbook
     /// <summary>
     /// Логика взаимодействия для ZenerDiodeGrid.xaml
     /// </summary>
-    public partial class ZenerDiodeGrid : UserControl
+    public partial class ZenerDiodeGrid : UserControl, IDelegate
     {
-        List<TextBox> localTextBoxes = new();
+        public IDelegate.SearchResultHandler GetSearchResult;
+
+        private List<TextBox> localTextBoxes = new();
+
+        private List<Detail> searchResultCollection = new();
         public ZenerDiodeGrid()
         {
             InitializeComponent();
             AddTextBoxes();
+            this.DataContext = this;
         }
+
+        public Visibility SearchButtonVisibility { get; set; }
+
+        public Visibility AddButtonVisibility { get; set; }
+
 
         private void AddTextBoxes()
         {
@@ -97,6 +108,29 @@ namespace DetailsHandbook
                 CustomMessageBox cmb = new CustomMessageBox("Деталь успешно добавлена!");
                 cmb.ShowDialog();
             }
+        }
+
+        private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultCollection.Clear();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is ZenerDiode zd)
+                    {
+                        if (zd.Model.IndexOf(ModelTextBox.Text) > -1
+                            && zd.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && zd.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && zd.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && zd.StabilizationVoltage.ToString().IndexOf(StabVoltTextBox.Text) > -1
+                            && zd.StabilizationCurrent.ToString().IndexOf(StabCurrTextBox.Text) > -1)
+                            searchResultCollection.Add(zd);
+                    }
+                }
+            }
+
+            GetSearchResult(searchResultCollection);
         }
     }
 }

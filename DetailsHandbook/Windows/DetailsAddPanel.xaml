@@ -268,25 +268,25 @@
                     </ScrollViewer>
                 </Grid>
                 <StackPanel Grid.Row="1">
-                    <local:AlternateResistorGrid Visibility="Visible" x:Name="AlternateResistorGrid"/>
-                    <local:AnalogMicrocircuitGrid Visibility="Collapsed" x:Name="AnalogMicrocircuitGrid"/>
-                    <local:CeramicCapacitorGrid Visibility="Collapsed" x:Name="CeramicCapacitorGrid"/>
-                    <local:ComputerSystemGrid Visibility="Collapsed" x:Name="ComputerSystemGrid"/>
-                    <local:СonstantResistorGrid Visibility="Collapsed" x:Name="ConstantResistorGrid"/>
-                    <local:ElectrolyticCapacitorGrid Visibility="Collapsed" x:Name="ElectrolyticCapacitorGrid"/>
-                    <local:HighFreqConnectorGrid Visibility="Collapsed" x:Name="HighFreqConnectorGrid"/>
-                    <local:HighFreqDiodeGrid  Visibility="Collapsed" x:Name="HighFreqDiodeGrid"/>
-                    <local:InductanceGrid Visibility="Collapsed" x:Name="InductanceGrid"/>
-                    <local:LightDiodeGrid Visibility="Collapsed" x:Name="LightDiodeGrid"/>
-                    <local:LogicMicrocircuitGrid Visibility="Collapsed" x:Name="LogicMicrocircuitGrid"/>
-                    <local:LowFreqConnectorGrid Visibility="Collapsed" x:Name="LowFreqConnectorGrid"/>
-                    <local:MembraneCapacitorGrid Visibility="Collapsed" x:Name="MembraneCapacitorGrid"/>
-                    <local:RectifyingDiodeGrid Visibility="Collapsed" x:Name="RectifyingDiodeGrid"/>
-                    <local:RelayGrid Visibility="Collapsed" x:Name="RelayGrid"/>
-                    <local:SwitcherGrid Visibility="Collapsed" x:Name="SwitcherGrid"/>
-                    <local:ThyristorGrid Visibility="Collapsed" x:Name="ThyristorGrid"/>
-                    <local:TransistorGrid Visibility="Collapsed" x:Name="TransistorGrid"/>
-                    <local:ZenerDiodeGrid Visibility="Collapsed" x:Name="ZenerDiodeGrid"/>
+                    <local:AlternateResistorGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Visible" x:Name="AlternateResistorGrid"/>
+                    <local:AnalogMicrocircuitGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="AnalogMicrocircuitGrid"/>
+                    <local:CeramicCapacitorGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="CeramicCapacitorGrid"/>
+                    <local:ComputerSystemGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="ComputerSystemGrid"/>
+                    <local:СonstantResistorGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="ConstantResistorGrid"/>
+                    <local:ElectrolyticCapacitorGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="ElectrolyticCapacitorGrid"/>
+                    <local:HighFreqConnectorGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="HighFreqConnectorGrid"/>
+                    <local:HighFreqDiodeGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed"  Visibility="Collapsed" x:Name="HighFreqDiodeGrid"/>
+                    <local:InductanceGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="InductanceGrid"/>
+                    <local:LightDiodeGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="LightDiodeGrid"/>
+                    <local:LogicMicrocircuitGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="LogicMicrocircuitGrid"/>
+                    <local:LowFreqConnectorGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="LowFreqConnectorGrid"/>
+                    <local:MembraneCapacitorGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="MembraneCapacitorGrid"/>
+                    <local:RectifyingDiodeGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="RectifyingDiodeGrid"/>
+                    <local:RelayGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="RelayGrid"/>
+                    <local:SwitcherGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="SwitcherGrid"/>
+                    <local:ThyristorGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="ThyristorGrid"/>
+                    <local:TransistorGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="TransistorGrid"/>
+                    <local:ZenerDiodeGrid AddButtonVisibility="Visible" SearchButtonVisibility="Collapsed" Visibility="Collapsed" x:Name="ZenerDiodeGrid"/>
                 </StackPanel>
             </Grid>
         </Grid>

@@ -86,15 +86,29 @@
                                  Style="{StaticResource DetailsDataInputStyle}"
                                  Margin="0 0 15 0"/>
         <local:CustomButton Grid.Column="1"
-                            Click="DetailAddButton_Click"
+                            Visibility="{Binding AddButtonVisibility}"
                                             Grid.Row="8"
                                             Style="{StaticResource GrayButtonStyle}"
                                             Width="100"
                                             Height="40"
                                             HorizontalAlignment="Right"
-                                            Margin="0 0 15 5">
+                                            Margin="0 0 15 5"
+                                            Click="DetailAddButton_Click">
             <local:CustomButton.Content>
                 <TextBlock Style="{StaticResource DetailButtonText}" Text="Добавить" FontSize="14"/>
+            </local:CustomButton.Content>
+        </local:CustomButton>
+        <local:CustomButton Grid.Column="1"
+                            Visibility="{Binding SearchButtonVisibility}"
+                                            Grid.Row="8"
+                                            Style="{StaticResource GrayButtonStyle}"
+                                            Width="100"
+                                            Height="40"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 0 15 5"
+                                            Click="SearchDetailButtom_Click">
+            <local:CustomButton.Content>
+                <TextBlock Style="{StaticResource DetailButtonText}" Text="Поиск" FontSize="14"/>
             </local:CustomButton.Content>
         </local:CustomButton>
     </Grid>
