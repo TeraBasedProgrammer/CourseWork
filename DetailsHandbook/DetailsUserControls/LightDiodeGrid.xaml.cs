@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public LightDiodeGrid()
         {
             InitializeComponent();
@@ -118,7 +117,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -132,12 +131,12 @@ namespace DetailsHandbook
                             && ld.CutoffCurrent.ToString().IndexOf(CutoffCurrTextBox.Text) > -1
                             && ld.CutoffVoltage.ToString().IndexOf(CutoffVoltTextBox.Text) > -1
                             && ld.LightPower.ToString().IndexOf(LightPowTextBox.Text) > -1)
-                            searchResultCollection.Add(ld);
+                            DetailsSearchPanel.SearchResultCollection.Add(ld);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

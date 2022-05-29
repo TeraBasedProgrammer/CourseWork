@@ -17,8 +17,7 @@ namespace DetailsHandbook
 {
     public partial class MainWindow : Window
     {
-
-        public IDelegate.ReRenderHandler ReRender = null;
+        public IDelegate.ReRenderHandler? ReRender = null;
         private Dictionary<CustomButton, Detail> buttonObjectPairs = new();
         private Dictionary<CustomButton, WrapPanel> filterPanelPairs = new();
      
@@ -146,8 +145,11 @@ namespace DetailsHandbook
             messageBox.Owner = this;
             messageBox.ShowDialog();           
             IsClosed(messageBox);
-            if (messageBox.DialogResult == true)
-                ReRender(DetailsSearchPanel.SearchResultCollection);
+            if (App.IsWindowOpen<DetailsSearchPanel>())
+            {
+                if (messageBox.DialogResult == true)
+                    ReRender();
+            }
         }
 
         private void AddDetailButton_Click(object sender, RoutedEventArgs e)
@@ -161,10 +163,12 @@ namespace DetailsHandbook
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             var dsp = new DetailsSearchPanel();
-            dsp.GetButtonRender += ButtonRender;
+            dsp.GetButtonRender = ButtonRender;
             dsp.Owner = this;
             dsp.ShowDialog();
             IsClosed(dsp);
+            if(dsp.DialogResult == true)
+                ReRender = null;
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)

@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public TransistorGrid()
         {
             InitializeComponent();
@@ -109,7 +108,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -124,12 +123,12 @@ namespace DetailsHandbook
                             && tr.Power.ToString().IndexOf(PowerTextBox.Text) > -1
                             && tr.CutoffFreq.ToString().IndexOf(CutoffFreqTextBox.Text) > -1
                             && tr.HighOrLowFreq.IndexOf(HighOrLowFreqTextBox.Text) > -1)
-                            searchResultCollection.Add(tr);
+                            DetailsSearchPanel.SearchResultCollection.Add(tr);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

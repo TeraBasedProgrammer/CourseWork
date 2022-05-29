@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public InductanceGrid()
         {
             InitializeComponent();
@@ -118,7 +117,26 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            GetSearchResult(searchResultCollection);
+            DetailsSearchPanel.SearchResultCollection = new();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is Inductance ind)
+                    {
+                        if (ind.Model.IndexOf(ModelTextBox.Text) > -1
+                            && ind.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && ind.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && ind.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && ind.Nominal.ToString().IndexOf(NominalTextBox.Text) > -1
+                            && ind.WorkingCurrent.ToString().IndexOf(WorkCurrTextBox.Text) > -1
+                            && ind.Access.ToString().IndexOf(AccessTextBox.Text) > -1)
+                            DetailsSearchPanel.SearchResultCollection.Add(ind);
+                    }
+                }
+            }
+
+            GetSearchResult();
         }
     }
 }

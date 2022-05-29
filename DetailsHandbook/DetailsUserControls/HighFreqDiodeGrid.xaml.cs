@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public HighFreqDiodeGrid()
         {
             InitializeComponent();
@@ -118,7 +117,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -132,12 +131,12 @@ namespace DetailsHandbook
                             && hfd.CutoffCurrent.ToString().IndexOf(CutoffCurrTextBox.Text) > -1
                             && hfd.CutoffVoltage.ToString().IndexOf(CutoffVoltTextBox.Text) > -1
                             && hfd.CutoffFreq.ToString().IndexOf(CutoffFreqTextBox.Text) > -1)
-                            searchResultCollection.Add(hfd);
+                            DetailsSearchPanel.SearchResultCollection.Add(hfd);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

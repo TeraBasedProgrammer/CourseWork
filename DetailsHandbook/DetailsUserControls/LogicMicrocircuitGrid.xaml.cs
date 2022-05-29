@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public LogicMicrocircuitGrid()
         {
             InitializeComponent();
@@ -100,7 +99,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -114,12 +113,12 @@ namespace DetailsHandbook
                             && lm.SupplyVoltage.IndexOf(SupVoltTextBox.Text) > -1
                             && lm.CaseType.ToString().IndexOf(CaseTypeTextBox.Text) > -1
                             && lm.LogicOrganization.IndexOf(LogicOrgTextBox.Text) > -1)
-                            searchResultCollection.Add(lm);
+                            DetailsSearchPanel.SearchResultCollection.Add(lm);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

@@ -33,7 +33,7 @@
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="2" 
-                                   Text="Цена:"
+                                   Text="Цена ($):"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="3" 

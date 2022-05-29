@@ -9,10 +9,10 @@ namespace DetailsHandbook
 {
     public interface IDelegate
     {
-        public delegate void SearchResultHandler(List<Detail> collection);
+        public delegate void SearchResultHandler();
 
         public delegate void ButtonRenderHandler(WrapPanel wp, Detail detail);
 
-        public delegate void ReRenderHandler(List<Detail> collection);
+        public delegate void ReRenderHandler();
     }
 }

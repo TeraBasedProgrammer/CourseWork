@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public SwitcherGrid()
         {
             InitializeComponent();
@@ -104,7 +103,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -117,12 +116,12 @@ namespace DetailsHandbook
                             && switcher.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
                             && switcher.MaxCommVoltage.ToString().IndexOf(MaxCommVoltTextBox.Text) > -1
                             && switcher.SwitchType.IndexOf(SwitchTypeTextBox.Text) > -1)
-                            searchResultCollection.Add(switcher);
+                            DetailsSearchPanel.SearchResultCollection.Add(switcher);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

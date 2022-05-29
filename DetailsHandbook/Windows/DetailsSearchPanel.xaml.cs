@@ -100,13 +100,36 @@ namespace DetailsHandbook.Windows
             checkBoxGridPairs.GetValueOrDefault(value).Visibility = Visibility.Visible;
         }
 
-        private void RenderSearchResult(List<Detail> collection)
+        private void RenderSearchResult()
         {
             if(((MainWindow)Owner).ReRender == null)
-                ((MainWindow)this.Owner).ReRender += RenderSearchResult;
+                ((MainWindow)this.Owner).ReRender = RenderSearchResult;
             SearchResultWrapPanel.Children.RemoveRange(0, SearchResultWrapPanel.Children.Count);
-            foreach (var det in collection)
-                GetButtonRender(SearchResultWrapPanel, det);
+            using (var db = new DetailsDbContext())
+            {
+                List<Detail> tempColl = new();
+                tempColl.AddRange(SearchResultCollection);
+                foreach (Detail det in tempColl)
+                {
+                    bool isFound = false;
+                    foreach (Detail dataDet in db.GetData())
+                    {
+                        if (det.Model == dataDet.Model)
+                        {
+                            isFound = true;
+                            break;
+                        }
+                    }
+
+                    if (!isFound)
+                    {
+                        SearchResultCollection.Remove(det);
+                    }
+                }
+            }
+            //SearchResultCollection.Capacity = SearchResultCollection.Count;
+            for(int i = 0; i < SearchResultCollection.Count; i++)
+                GetButtonRender(SearchResultWrapPanel, SearchResultCollection[i]);
         }
 
         private void DetailsCheckBox_Click(object sender, RoutedEventArgs e)

@@ -25,8 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
-
         public CeramicCapacitorGrid()
         {
             InitializeComponent();
@@ -114,7 +112,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -129,12 +127,12 @@ namespace DetailsHandbook
                             && cc.WorkingVoltage.ToString().IndexOf(WorkVoltageTextBox.Text) > -1
                             && cc.Access.ToString().IndexOf(AccessTextBox.Text) > -1
                             && cc.Tcc.IndexOf(TccTextBox.Text) > -1)
-                            searchResultCollection.Add(cc);
+                            DetailsSearchPanel.SearchResultCollection.Add(cc);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

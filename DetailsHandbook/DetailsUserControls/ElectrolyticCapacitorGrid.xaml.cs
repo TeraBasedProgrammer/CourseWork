@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public ElectrolyticCapacitorGrid()
         {
             InitializeComponent();
@@ -113,7 +112,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -128,12 +127,12 @@ namespace DetailsHandbook
                             && ec.WorkingVoltage.ToString().IndexOf(WorkVoltageTextBox.Text) > -1
                             && ec.Access.ToString().IndexOf(AccessTextBox.Text) > -1
                             && ec.PlateType.IndexOf(PlateTypeTextBox.Text) > -1)
-                            searchResultCollection.Add(ec);
+                            DetailsSearchPanel.SearchResultCollection.Add(ec);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

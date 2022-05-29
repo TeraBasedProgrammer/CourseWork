@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public LowFreqConnectorGrid()
         {
             InitializeComponent();
@@ -103,7 +102,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -116,12 +115,12 @@ namespace DetailsHandbook
                             && lfc.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
                             && lfc.MaxCommVoltage.ToString().IndexOf(MaxCommVoltageTextBox.Text) > -1
                             && lfc.ConnectorType.IndexOf(ConnectorTypeTextBox.Text) > -1)
-                            searchResultCollection.Add(lfc);
+                            DetailsSearchPanel.SearchResultCollection.Add(lfc);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

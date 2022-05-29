@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public СonstantResistorGrid()
         {
             InitializeComponent();
@@ -118,7 +117,27 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            GetSearchResult(searchResultCollection);
+            DetailsSearchPanel.SearchResultCollection = new();
+            using (var db = new DetailsDbContext())
+            {
+                foreach (Detail det in db.GetData())
+                {
+                    if (det is ConstantResistor cr)
+                    {
+                        if (cr.Model.IndexOf(ModelTextBox.Text) > -1
+                            && cr.Manufacturer.IndexOf(ManufTextBox.Text) > -1
+                            && cr.Price.ToString().IndexOf(PriceTextBox.Text) > -1
+                            && cr.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
+                            && cr.Power.ToString().IndexOf(PowerTextBox.Text) > -1
+                            && cr.Nominal.ToString().IndexOf(NominalTextBox.Text) > -1
+                            && cr.Access.ToString().IndexOf(AccessTextBox.Text) > -1
+                            && cr.Type.IndexOf(TypeTextBox.Text) > -1)
+                            DetailsSearchPanel.SearchResultCollection.Add(cr);
+                    }
+                }
+            }
+
+            GetSearchResult();
         }
     }
 }

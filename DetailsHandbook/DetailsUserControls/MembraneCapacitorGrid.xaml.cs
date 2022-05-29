@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public MembraneCapacitorGrid()
         {
             InitializeComponent();
@@ -113,7 +112,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -128,12 +127,12 @@ namespace DetailsHandbook
                             && mc.WorkingVoltage.ToString().IndexOf(WorkingVoltTextBox.Text) > -1
                             && mc.Access.ToString().IndexOf(AccessTextBox.Text) > -1
                             && mc.PlateType.IndexOf(PlateTypeTextBox.Text) > -1)
-                            searchResultCollection.Add(mc);
+                            DetailsSearchPanel.SearchResultCollection.Add(mc);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

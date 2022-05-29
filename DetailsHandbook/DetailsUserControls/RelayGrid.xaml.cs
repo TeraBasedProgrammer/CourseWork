@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public RelayGrid()
         {
             InitializeComponent();
@@ -110,7 +109,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -123,12 +122,12 @@ namespace DetailsHandbook
                             && rl.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
                             && rl.MaxCommVoltage.ToString().IndexOf(MaxCommVoltTextBox.Text) > -1
                             && rl.WindingWorkVoltage.ToString().IndexOf(WindingVoltTextBox.Text) > -1)
-                            searchResultCollection.Add(rl);
+                            DetailsSearchPanel.SearchResultCollection.Add(rl);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

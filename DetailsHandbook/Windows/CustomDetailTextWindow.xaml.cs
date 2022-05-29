@@ -53,7 +53,7 @@ namespace DetailsHandbook.Windows
             DetailDeletionConf ddc = new(currentObject);
             ddc.Owner = this;
             ddc.ShowDialog();
-            if (ddc.DialogResult == true && ddc.IsDeleted())
+            if (ddc.DialogResult == true && ddc.IsDeleted() == true)
             {
                 this.DialogResult = true;
             }

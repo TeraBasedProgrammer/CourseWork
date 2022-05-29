@@ -25,7 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public RectifyingDiodeGrid()
         {
             InitializeComponent();
@@ -119,7 +118,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -133,12 +132,12 @@ namespace DetailsHandbook
                             && rd.CutoffCurrent.ToString().IndexOf(CutoffCurTextBox.Text) > -1
                             && rd.CutoffVoltage.ToString().IndexOf(CutoffVoltTextBox.Text) > -1
                             && rd.ReverseCurrent.ToString().IndexOf(RevCurrTextBox.Text) > -1)
-                            searchResultCollection.Add(rd);
+                            DetailsSearchPanel.SearchResultCollection.Add(rd);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

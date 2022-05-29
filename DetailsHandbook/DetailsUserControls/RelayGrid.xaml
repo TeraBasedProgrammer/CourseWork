@@ -32,17 +32,17 @@
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="2" 
-                                   Text="Цена:"
+                                   Text="Цена ($):"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="3" 
                                    Text="Аналог:"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
-                                   Grid.Row="4" Text="Макс. комм. напр.:"
+                                   Grid.Row="4" Text="Макс. комм. напр. (В):"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
-                                   Grid.Row="5" Text="Напряжение обмотки:"
+                                   Grid.Row="5" Text="Напряж. обмотки (В):"
                                    Style="{StaticResource LabelTextStyle}"/>
 
         <TextBox Grid.Column="1" 

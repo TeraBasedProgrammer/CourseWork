@@ -26,7 +26,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
         public ZenerDiodeGrid()
         {
             InitializeComponent();
@@ -112,7 +111,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -125,12 +124,12 @@ namespace DetailsHandbook
                             && zd.Interchangeability.IndexOf(IntchabTextBox.Text) > -1
                             && zd.StabilizationVoltage.ToString().IndexOf(StabVoltTextBox.Text) > -1
                             && zd.StabilizationCurrent.ToString().IndexOf(StabCurrTextBox.Text) > -1)
-                            searchResultCollection.Add(zd);
+                            DetailsSearchPanel.SearchResultCollection.Add(zd);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

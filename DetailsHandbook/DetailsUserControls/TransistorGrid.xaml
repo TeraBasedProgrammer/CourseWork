@@ -32,7 +32,7 @@
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="2" 
-                                   Text="Цена"
+                                   Text="Цена ($):"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="3" 
@@ -42,11 +42,11 @@
                                    Grid.Row="4" Text="Тип:"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
-                                   Grid.Row="5" Text="Мощность:"
+                                   Grid.Row="5" Text="Мощность (&lt; / &gt; 1 Вт):"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="6" 
-                                   Text="Граничная частота:"
+                                   Text="Граничная част. (МГц):"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="7" 

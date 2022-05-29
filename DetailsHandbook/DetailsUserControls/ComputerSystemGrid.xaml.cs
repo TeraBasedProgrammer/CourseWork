@@ -25,8 +25,6 @@ namespace DetailsHandbook
 
         private List<TextBox> localTextBoxes = new();
 
-        private List<Detail> searchResultCollection = new();
-
         public ComputerSystemGrid()
         {
             InitializeComponent();
@@ -101,7 +99,7 @@ namespace DetailsHandbook
 
         private void SearchDetailButtom_Click(object sender, RoutedEventArgs e)
         {
-            searchResultCollection.Clear();
+            DetailsSearchPanel.SearchResultCollection = new();
             using (var db = new DetailsDbContext())
             {
                 foreach (Detail det in db.GetData())
@@ -115,12 +113,12 @@ namespace DetailsHandbook
                             && cs.SupplyVoltage.IndexOf(SuppVoltTextBox.Text) > -1
                             && cs.CaseType.ToString().IndexOf(CaseTypeTextBox.Text) > -1
                             && cs.FunctionalPurpose.IndexOf(FuncPurpTextBox.Text) > -1)
-                            searchResultCollection.Add(cs);
+                            DetailsSearchPanel.SearchResultCollection.Add(cs);
                     }
                 }
             }
 
-            GetSearchResult(searchResultCollection);
+            GetSearchResult();
         }
     }
 }

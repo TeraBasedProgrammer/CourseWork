@@ -32,21 +32,21 @@
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="2" 
-                                   Text="Цена"
+                                   Text="Цена ($):"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="3" 
                                    Text="Аналог:"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
-                                   Grid.Row="4" Text="Номинал:"
+                                   Grid.Row="4" Text="Номинал (мкФ):"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
-                                   Grid.Row="5" Text="Раб. напряжение:"
+                                   Grid.Row="5" Text="Раб. напряжение (В):"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="6" 
-                                   Text="Допуск:"
+                                   Text="Допуск (%):"
                                    Style="{StaticResource LabelTextStyle}"/>
         <TextBlock Grid.Column="0" 
                                    Grid.Row="7" 
