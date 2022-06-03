@@ -127,7 +127,6 @@ namespace DetailsHandbook.Windows
                     }
                 }
             }
-            //SearchResultCollection.Capacity = SearchResultCollection.Count;
             for(int i = 0; i < SearchResultCollection.Count; i++)
                 GetButtonRender(SearchResultWrapPanel, SearchResultCollection[i]);
         }

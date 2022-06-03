@@ -1,0 +1,72 @@
+﻿<Window x:Class="DetailsHandbook.Windows.FAQWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DetailsHandbook"
+        mc:Ignorable="d"
+        Title="FAQWindow" Height="510" Width="300"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        Icon="..\Images\logo4.2.png">
+    <Border Background="#000342" x:Name="MainBorder">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                        Height="22"
+                        FlowDirection="RightToLeft" 
+                        Background="#FF151192"
+                        MouseDown="WindowPanel_MouseDown">
+                <Button Width="20" Content="⨉" FontSize="13" 
+                        x:Name="WindowCloseButton"
+                        Foreground="White" 
+                        BorderThickness="0"
+                        Click="WindowCloseButton_Click"
+                        Style="{StaticResource CloseButtonStyle}"/>
+                <Button Width="20" Content="🗕" FontSize="13" 
+                        Foreground="White" 
+                        BorderThickness="0"
+                        x:Name="WindowHideButton"
+                        Click="WindowHideButton_Click"
+                        Style="{StaticResource HideButtonStyle}"/>
+            </StackPanel>
+            <TextBlock Height="30" 
+                       Width="Auto"
+                       HorizontalAlignment="Center"
+                       Margin="0 7 0 0"
+                       Foreground="White"
+                       FontSize="20"
+                       Text="FAQ"/>
+            <TextBlock 
+                     x:Name="MessageBoxText"
+                     Margin="10"
+                     Foreground="White"
+                     FontSize="13"
+                     MaxWidth="280"
+                     Height="390"
+                     TextWrapping="Wrap"
+                     HorizontalAlignment="Center"
+                     Text="1. Чтобы увидеть информацию о детали, нажмите на соответствующую кнопку в каталоге / окне поиска.
+                     &#x0a;&#x0a;2. Чтобы удалить деталь, нажмите кнопку &quot;Удалить&quot; во всплывающем окне соответствующей детали.
+                     &#x0a;&#x0a;3. Чтобы оставить в каталоге один блок деталей, нажмите на кнопку фильтра в левом верхнем углу и выберите кнопку с названием нужного вам блока
+                     &#x0a;&#x0a;4. Чтобы добавить деталь, нажмите кнопку &quot;Добавить деталь&quot; в верхней части интерфейса, выберите нужный тип, введите данные и нажмите кнопку &quot;Добавить&quot;
+                     &#x0a;&#x0a;5. Чтобы найти нужную вам деталь, нажмите на кнопку &quot;Поиск детали&quot; в верхней части интерфейса, выберите нужный тип, введите данные и нажмите кнопку &quot;Поиск&quot;"/>
+            <StackPanel Orientation="Horizontal"
+                        Height ="40"
+                        FlowDirection="RightToLeft" 
+                        Background="#FF151192">
+                <local:CustomButton Style="{StaticResource GrayButtonStyle}"
+                                    Width="70"
+                                    Height="30"
+                                    Margin="10 0 0 0"
+                                    Click="OkButton_Click">
+                    <local:CustomButton.Content>
+                        <TextBlock Style="{StaticResource DetailButtonText}"
+                                   Text="ОК"/>
+                    </local:CustomButton.Content>
+                </local:CustomButton>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>

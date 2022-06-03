@@ -199,5 +199,16 @@ namespace DetailsHandbook
             sender = tempButton;
             FilterOut((CustomButton)sender);
         }
+
+        // FAQ
+
+        private void FAQHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F1)
+            {
+                var faq = new FAQWindow();
+                faq.ShowDialog();
+            }               
+        }
     }
 }

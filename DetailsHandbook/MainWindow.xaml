@@ -13,6 +13,7 @@
         WindowStyle="None"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
+        KeyDown="FAQHandler"
         Icon="Images\logo4.2.png">
     <Window.Resources>
         <ResourceDictionary>
